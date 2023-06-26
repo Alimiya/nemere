@@ -1,0 +1,180 @@
+@media only screen and (min-width: 992px) {
+    #register_back {
+        position: absolute;
+        width: 74.15%;
+        height: 100%;
+        left: 25.85%;
+        top: 0px;
+        background: #EDE2DC;
+    }
+
+    #logo {
+        position: absolute;
+        width: 20%;
+        height: 9%;
+        top: 10%;
+        left: 3%;
+    }
+
+    #balabaksha {
+        position: absolute;
+        left: 9.2%;
+        top: 16%;
+        font-family: 'Comfortaa', cursive;
+        font-weight: 700;
+        font-size: 1.3vw;
+        line-height: 99.8%;
+        letter-spacing: -0.01em;
+        color: #000000;
+    }
+
+    #zagolovok1 {
+        position: absolute;
+        width: 26%;
+        left: 2%;
+        top: 30%;
+        font-family: 'Comfortaa', cursive;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 2.5vw;
+        line-height: 99.8%;
+        letter-spacing: -0.01em;
+        color: #331B3B;
+    }
+
+    #line_under_h1 {
+        position: absolute;
+        width: 15%;
+        height: 0%;
+        left: 2%;
+        top: 45%;
+        border: 1.042vw solid #FDC221;
+    }
+
+    #login_header {
+        position: absolute;
+        width: 26%;
+        left: 40%;
+        top: 7%;
+        font-family: 'Comfortaa', cursive;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 2.5vw;
+        line-height: 99.8%;
+        letter-spacing: -0.01em;
+        color: #331B3B;
+    }
+
+    #email1 {
+        position: absolute;
+        width: 26%;
+        left: 45%;
+        top: 30%;
+        font-family: 'Comfortaa', cursive;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 1.5vw;
+        line-height: 99.8%;
+        letter-spacing: -0.01em;
+        color: #331B3B;
+    }
+
+    #email {
+        position: absolute;
+        width: 26%;
+        left: 45%;
+        top: 35%;
+        background-color: transparent;
+        border: 0.05px solid #ccb9b0;
+        font-size: 1vw;
+        height: 3%;
+        outline: 0;
+        padding: 0.5%;
+        width: 30%;
+    }
+
+    #password1 {
+        position: absolute;
+        width: 26%;
+        left: 45%;
+        top: 50%;
+        font-family: 'Comfortaa', cursive;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 1.5vw;
+        line-height: 99.8%;
+        letter-spacing: -0.01em;
+        color: #331B3B;
+    }
+
+    #password {
+        position: absolute;
+        width: 26%;
+        left: 45%;
+        top: 55%;
+        background-color: transparent;
+        border: 0.05px solid #ccb9b0;
+        font-size: 1vw;
+        height: 3%;
+        outline: 0;
+        padding: 0.5%;
+        width: 30%;
+    }
+
+    ::placeholder {
+        font-family: 'Comfortaa', cursive;
+    }
+
+    #login1 {
+        position: absolute;
+        left: 55%;
+        top: 70%;
+        width: 13%;
+        height: 9%;
+        border: none;
+        background-color: #331B3B;
+        color: #FFFFFF;
+        font-family: 'Comfortaa', cursive;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 2vw;
+        line-height: 99.8%;
+        letter-spacing: -0.01em;
+        padding: 1%;
+    }
+
+    #login1:hover {
+        transition-duration: 0.4s;
+        background-color: #27142c;
+        box-shadow: black 3px 3px 3px;
+    }
+
+    #register {
+        position: absolute;
+        width: 26%;
+        left: 4%;
+        top: 80%;
+        font-family: 'Comfortaa', cursive;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 1.5vw;
+        line-height: 99.8%;
+        letter-spacing: -0.01em;
+        color: #331B3B;
+    }
+
+    #register_a {
+        position: absolute;
+        width: 26%;
+        left: 16%;
+        top: 90%;
+        font-family: 'Comfortaa', cursive;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 1.5vw;
+        line-height: 99.8%;
+        letter-spacing: -0.01em;
+        color: #331B3B;
+        text-decoration: none;
+    }
+}

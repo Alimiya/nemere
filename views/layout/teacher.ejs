@@ -1,0 +1,10 @@
+<header>
+        <%- include('../components/header');%>
+</header>
+<div class="container">
+<ul>
+    <% teacher.forEach(function(teacher) { %>
+        <li><%= teacher.name %> <%= teacher.surname %></li>
+    <% }); %>
+</ul>
+</div>

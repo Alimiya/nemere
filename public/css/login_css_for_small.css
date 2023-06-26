@@ -1,0 +1,178 @@
+@media only screen and (max-width: 768px){
+    body{
+        background: #EDE2DC;
+    }
+    #register_back{
+        display: none;
+    }
+    #logo{
+        position: absolute;
+        width: 70%;
+        margin-top:11%;
+        left:13%;
+    }
+    #balabaksha{
+        position: absolute;
+        left: 34.5%;
+        margin-top: 25%;
+        font-family: 'Comfortaa', cursive;
+        font-weight: 700;
+        font-size: 3.2vw;
+        line-height: 99.8%;
+        letter-spacing: -0.01em;
+        color: #000000;
+    }
+    #zagolovok1{
+        position: absolute;
+        width: 70%;
+        height: 0.09%;
+        left: 10%;
+        margin-top: 30%;
+        font-family: 'Comfortaa', cursive;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 7vw;
+        line-height: 99.8%;
+        letter-spacing: -0.01em;
+        color: #331B3B;
+        padding:10px;
+        text-align: center;
+    }
+    #line_under_h1{
+        position: absolute;
+        width: 50%;
+        height: 0px;
+        left: 22.5%;
+        margin-top: 50%;
+        border: 5px solid #FDC221;
+    }
+    #login_header{
+        position: absolute;
+        width: 80%;
+        left: 18%;
+        margin-top: 60%;
+        font-family: 'Comfortaa', cursive;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 7vw;
+        line-height: 99.8%;
+        letter-spacing: -0.01em;
+        color: #331B3B;
+    }
+    #email1{
+        position: absolute;
+        width: 26%;
+        left: 18%;
+        margin-top:75%;
+        font-family: 'Comfortaa', cursive;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 5vw;
+        line-height: 99.8%;
+        letter-spacing: -0.01em;
+        color: #331B3B;
+    }
+    #email{
+        position: absolute;
+        width: 60%;
+        left: 18%;
+        margin-top:85%;
+        background-color: transparent;
+        border: 0.05px solid #ccb9b0;
+        font-size: 3.5vw;
+        height: 5%;
+        outline: 0;
+        padding: 0.5%;
+    }
+    #password1{
+        position: absolute;
+        width: 26%;
+        left: 18%;
+        margin-top:105%;
+        font-family: 'Comfortaa', cursive;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 5vw;
+        line-height: 99.8%;
+        letter-spacing: -0.01em;
+        color: #331B3B;
+    }
+    #password{
+        position: absolute;
+        width: 60%;
+        left: 18%;
+        margin-top:115%;
+        background-color: transparent;
+        border: 0.05px solid #ccb9b0;
+        font-size: 3.5vw;
+        height: 5%;
+        outline: 0;
+        padding: 0.5%;
+    }
+    ::placeholder{
+        font-family: 'Comfortaa', cursive;
+    }
+    #login1{
+        position: absolute;
+        left: 30%;
+        margin-top:145%;
+        width: 40%;
+        height: 5%;
+        border:none;
+        background-color: #331B3B;
+        color:#FFFFFF;
+        font-family: 'Comfortaa', cursive;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 5vw;
+        line-height: 99.8%;
+        letter-spacing: -0.01em;
+        padding: 1%;
+    }
+    @media (min-width: 426px) {
+        #login1{
+            position: absolute;
+            left: 30%;
+            margin-top:145%;
+            width: 40%;
+            height: 10%;
+            border:none;
+            background-color: #331B3B;
+            color:#FFFFFF;
+            font-family: 'Comfortaa', cursive;
+            font-style: normal;
+            font-weight: 300;
+            font-size: 5vw;
+            line-height: 99.8%;
+            letter-spacing: -0.01em;
+            padding: 1%;
+        }
+    }
+    #register{
+        position: absolute;
+        width: 60%;
+        left:26%;
+        margin-top:180%;
+        font-family: 'Comfortaa', cursive;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 4vw;
+        line-height: 99.8%;
+        letter-spacing: -0.01em;
+        color: #331B3B;
+    }
+    #register_a{
+        position: absolute;
+        width: 26%;
+        left:41%;
+        margin-top:185%;
+        font-family: 'Comfortaa', cursive;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 4vw;
+        line-height: 99.8%;
+        letter-spacing: -0.01em;
+        color: #331B3B;
+        text-decoration: none;
+    }
+}
