@@ -1,11 +1,8 @@
 const express = require("express")
-const cors = require("cors")
 const mongoose = require("mongoose")
 const cookieParser = require("cookie-parser")
 const bodyParser = require("body-parser")
-const multer=require('multer')
-const session = require("express-session")
-const MongoDBStore = require('connect-mongodb-session')(session)
+// const session = require("express-session")
 require("dotenv").config({ path: "./config/.env" })
 
 const userRoute = require("./routes/route")
@@ -14,6 +11,9 @@ const authRoute = require("./routes/authRoutes")
 const teacherRoute = require("./routes/teacher")
 const adminRoute = require('./routes/adminRoutes')
 const courseRoute = require('./routes/course')
+const usersRoute = require('./routes/api/userRoutes')
+const coursesRoute = require('./routes/api/courseRoutes')
+const helpRoute = require('./routes/api/helpRoutes')
 
 const app = express()
 const PORT = 3000
@@ -30,7 +30,6 @@ app.use(bodyParser.urlencoded({extended:false}))
 
 
 app.use(cookieParser())
-app.use(cors())
 
 app.use(userRoute)
 app.use(profileRoute)
@@ -38,18 +37,16 @@ app.use(authRoute)
 app.use(teacherRoute)
 app.use(adminRoute)
 app.use(courseRoute)
+app.use('/api', usersRoute)
+app.use('/api', coursesRoute)
+app.use('/api', helpRoute)
 
-const store = new MongoDBStore({
-    uri:process.env.MongoDB_URI,
-    collection: 'sessions'
-})
 
-app.use(session({
-    secret: 'secretKey',
-    resave: false,
-    saveUninitialized: true,
-    store:store
-}))
+// app.use(session({
+//     secret: 'secretKey',
+//     resave: false,
+//     saveUninitialized: true,
+// }))
 const start = async () => {
     try {
         await mongoose
@@ -63,6 +60,13 @@ const start = async () => {
             .catch((error) => console.log(error.message))
         app.listen(PORT, () => {
             console.log(`Server is running on PORT = ${PORT}`)
+        })
+        process.on("beforeExit", () => {
+            server.close(() => {
+                console.log("Server is shutting down")
+                res.clearCookie("auth")
+                res.clearCookie("authuser")
+            })
         })
     } catch (error) {
         console.log(error)

@@ -18,14 +18,17 @@
                     <a class="nav-link" id="teacher" href="/teacher" style="font-size: 1.03rem;">Учителя</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="profile" href="/profile" style="font-size: 1.03rem;">Профиль</a>
+                    <a class="nav-link" id="profile" href="/profile/" style="font-size: 1.03rem;">Профиль</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="about" href="/about" style="font-size: 1.03rem;">О нас</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="about" href="/helps" style="font-size: 1.03rem;">Поддержка</a>
+                </li>
             </ul>
             <ul class="navbar-nav ml-auto float-right" style="z-index:1">
-                <%if(user){%>
+                <%if(adminlogin || userlogin){%>
                     <li class="nav-item">
                         <button class="btn btn-outline-light text-dark" id="login" onclick="location.href='/logout'"
                                 type="submit" style="font-size: 1.03rem;" >Выйти</button>

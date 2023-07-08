@@ -43,7 +43,7 @@
                             <%}%>
                         <div class="d-flex justify-content-center mb-2 mt-2 mr-1">
                             <button type="button" class="btn btn-primary mr-1" data-bs-toggle="modal" data-bs-target="#updateModal">Edit</button>
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateModal11">Upload Photo</button>
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateModala">Upload Photo</button>
                         </div>
                     </div>
                 </div>
@@ -66,6 +66,24 @@
                             </div>
                             <div class="col-sm-9">
                                 <p class="text-muted mb-0"><%= user.surname%></p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Lastname</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0"><%= user.lastname%></p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Experience</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0"><%= user.experience%></p>
                             </div>
                         </div>
                         <hr>
@@ -102,13 +120,17 @@
 <!--                                        <%= course.direction %>-->
 <!--                                        <%= course.createdAt.toLocaleDateString('ru-RU', { day: '2-digit', month: '2-digit', year: 'numeric' }) %>-->
 <!--                                        <embed src="/pdf/<%=course.pdf%>" width="500" height="375" type="application/pdf">-->
-                                        <form action="/profile/<%= course._id %>/courses/update" method="post">
-                                            <button type="button" class="btn btn-primary mr-1" data-bs-toggle="modal" data-bs-target="#updateModal<%= i %>">Edit</button>
-                                        </form>
                                         <form action="/profile/<%= course._id %>/courses/delete" method="POST">
                                             <button type="button" class="btn btn-primary mr-1" data-bs-toggle="modal" data-bs-target="#deleteModal<%= i %>">Delete</button>
                                         </form>
-                                        <hr>
+                                        <%if(course.status === 'в обработке') {%>
+                                            <p style="color: darkorange"><%= course.status%></p>
+                                            <form action="/profile/<%= course._id %>/courses/update" method="post">
+                                                <button type="button" class="btn btn-primary mr-1" data-bs-toggle="modal" data-bs-target="#updateModal<%= i %>">Edit</button>
+                                            </form>
+                                        <%} else{%>
+                                            <p style="color: green"><%= course.status%></p>
+                                            <%}%>
                                     </li>
 
                                     <%- include('../components/profile/editCourseModal');%>
@@ -117,7 +139,7 @@
 
                             </ul>
                             <div class="d-flex justify-content-center mb-2 mt-2 mr-1">
-                                <button type="button" class="btn btn-primary mr-1" data-bs-toggle="modal" data-bs-target="#updateModal2">Create</button>
+                                <button type="button" class="btn btn-primary mr-1" data-bs-toggle="modal" data-bs-target="#updateModall">Create</button>
                             </div>
                         </div>
                     </div>

@@ -1,8 +1,15 @@
+<header>
+    <%- include('../components/header');%>
+</header>
 <!-- searchForm.ejs -->
 <form action="/course/search" method="GET">
     <div>
         <label for="searchQuery">Поиск по названию курса:</label>
         <input type="text" id="searchQuery" name="searchQuery" value="<%= searchQuery || '' %>" placeholder="Введите название курса">
+    </div>
+    <div>
+        <label for="searchQueryFio">Поиск по фио:</label>
+        <input type="text" id="searchQueryFio" name="searchQueryFio" value="<%= searchQueryFio || '' %>" placeholder="Введите фио">
     </div>
     <div>
         <label for="directionFilter">Фильтр по направлению:</label>
@@ -41,12 +48,18 @@
 
 <ul>
     <% courses.forEach((course) => { %>
+    <%if(course.status!=='в обработке'){%>
         <li>
+            <p>Фио <%=course.fio%></p>
             <p>Название <%= course.title %></p>
             <p> Цена <%= course.price %></p>
             <p>Направление <%= course.direction %></p>
             <p> Дата создания <%= course.createdAt.toLocaleDateString('ru-RU', { day: '2-digit', month: '2-digit', year: 'numeric' }) %></p>
+            <form action="/course/read/<%=course._id%>" method="get">
+                <button type="submit">Read More</button>
+            </form>
             <!-- Дополнительная информация о курсе -->
         </li>
+    <%} else{null}%>
     <% }); %>
 </ul>

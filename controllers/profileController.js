@@ -4,6 +4,7 @@ const mongoose = require("mongoose")
 const {ObjectId}=require('mongodb')
 const CourseModel = require("../models/courseModel")
 const User = require("../models/userModel")
+const bcrypt = require("bcryptjs");
 
 // Получение данных профиля GET
 exports.getProfile = async (req, res) => {
@@ -19,7 +20,14 @@ exports.getProfile = async (req, res) => {
             return res.status(404).send("User not found")
         }
         // Render the profile page with the user's name
-        res.render("user/profile", { user: user, courses:course })
+        if (req.cookies.authuser === 'user') {
+            res.render("user/profile", {
+                user: user,
+                courses: course,
+                adminlogin: req.cookies.auth,
+                userlogin: req.cookies.authuser
+            })
+        } else{res.redirect('/login')}
     } catch (error) {
         console.log(error)
         res.status(500).send("Something went wrong")
@@ -28,12 +36,15 @@ exports.getProfile = async (req, res) => {
 
 // Обновление профиля PATCH
 exports.updateProfile = async (req, res) => {
-    const { name, surname, password} = req.body
+    const { name, surname, lastname, password} = req.body
     const id = req.params.id
     try {
+        // Hash the password
+        const salt = await bcrypt.genSalt()
+        const hashedPassword = await bcrypt.hash(password, salt)
         const updateUser = await UserModel.findByIdAndUpdate(
             id,
-            { name, surname, password },
+            { name, surname, lastname, password:hashedPassword },
             { new: true }
         )
         res.redirect(`/profile/${id}`)
@@ -94,8 +105,10 @@ exports.getCourse=async(req,res)=>{
     const user_id=id
     const pdf = req.file ? req.file.filename : null
     try{
+        const users = await UserModel.findById(user_id)
+        const fio = (users.surname+' '+users.name+' '+users.lastname)
         const uploadPdf=new CourseModel(
-            {title,description,price,direction,pdf, user_id}
+            {fio, title,description,price,direction,pdf, user_id}
         )
         uploadPdf
             .save()
@@ -121,7 +134,7 @@ exports.deleteCourse=async(req,res,next)=>{
             return res.status(404).render('error', { message: 'Курс не найден' })
         }
         res.redirect(`/profile/${user_id.user_id}`)
-        res.render('user/profile', { courses:courses, user:user })
+        res.render('user/profile', { courses:courses, user:user, adminlogin:req.cookies.auth, userlogin:req.cookies.authuser })
     } catch (error) {
         next(error)
     }
@@ -132,11 +145,11 @@ exports.updateCourse=async(req,res,next)=>{
         const user_id = await CourseModel.findOne({_id:id})
         console.log("start:"+user_id.user_id+":end")
         console.log("start:"+user_id+":end")
-        const { title, description,price,direction } = req.body
+        const {fio, title, description,price,direction } = req.body
         const user = await UserModel.findOne({id:Object(user_id.user_id)})
-        const courses = await CourseModel.findByIdAndUpdate(id, { title, description,price,direction},{ new: true })
+        const courses = await CourseModel.findByIdAndUpdate(id, {fio, title, description,price,direction},{ new: true })
         res.redirect(`/profile/${user_id.user_id}`)
-        res.render('user/profile', { courses:courses, user:user })
+        res.render('user/profile', { courses:courses, user:user, adminlogin:req.cookies.auth, userlogin:req.cookies.authuser })
     } catch (error) {
         next(error)
     }

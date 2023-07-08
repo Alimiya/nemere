@@ -17,8 +17,12 @@
                         <input type="text" class="form-control" id="surname" name="surname" value="<%= user.surname%>">
                     </div>
                     <div class="mb-3">
+                        <label for="lastname" class="form-label">Lastname</label>
+                        <input type="text" class="form-control" id="lastname" name="lastname" value="<%= user.lastname%>">
+                    </div>
+                    <div class="mb-3">
                         <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="password" name="password">
+                        <input type="password" class="form-control" id="password" name="password" required>
                     </div>
                 </div>
                 <div class="modal-footer">

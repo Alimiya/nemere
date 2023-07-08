@@ -25,16 +25,20 @@
 
     <div>
         <p></p>
-        <form name="form" id = "register" method="post">
+        <form name="form" id ="register" method="post">
             <h1 id="register_header">Аккаунтқа тіркелу</h1>
             <label for="name" id="name1">Аты</label>
-            <input name="name" id="name" type="text">
+            <input name="name" id="name" type="text" required>
             <label for="surname" id="surname1">Тегі</label>
-            <input name="surname" id="surname" type="text">
+            <input name="surname" id="surname" type="text" required>
+            <label for="lastname" id="lastname1">Әкесінің Аты</label>
+            <input name="lastname" id="lastname" type="text" required>
+            <label for="experience" id="experience1">Жұмыс тәжірибесі</label>
+            <input name="experience" id="experience" type="text" required>
             <label for="email" id="email1">E-Mail</label>
-            <input name="email" id="email" type="text">
+            <input name="email" id="email" type="text" required>
             <label for="password" id="password1">Құпиясөз</label>
-            <input type = "password" name="password" id="password" type="text">
+            <input type = "password" name="password" id="password" type="text" required>
             <button type="submit" id="submit1">Тіркелу</button>
         </form>
     </div>

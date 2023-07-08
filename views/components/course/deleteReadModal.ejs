@@ -1,0 +1,22 @@
+<%comments.forEach((comment, i)=>{%>
+<div class="modal fade" id="deleteReadModal<%= i %>" tabindex="-1" aria-labelledby="deleteReadModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form action="/course/comment/<%=comment._id%>/delete" method="post">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deleteReadModalLabel">Delete</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h2>Delete User</h2>
+                        <p>Are you sure you want to delete this user?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Delete</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+<%})%>

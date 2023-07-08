@@ -14,10 +14,10 @@ exports.getRegister = (req, res) => {
 // POST register
 exports.postRegister = async (req, res) => {
     try {
-        const { name, surname, email, password } = req.body
+        const { name, surname, lastname, experience, email, password } = req.body
 
         // Check if email and password are provided
-        if (!email || !password || !name || !surname) {
+        if (!email || !password || !name || !surname || !lastname || !experience) {
             res
                 .status(400)
                 .json({ success: false, message: "Please fill all required fields" })
@@ -41,6 +41,8 @@ exports.postRegister = async (req, res) => {
         const newUser = new UserModel({
             name,
             surname,
+            lastname,
+            experience,
             email,
             password: hashedPassword,
         })
@@ -95,7 +97,9 @@ exports.postLogin = async (req, res) => {
             return
         }
 
-        if (password !== user.password) {
+        // Check if password is correct
+        const isPasswordCorrect = await bcrypt.compare(password, user.password)
+        if (!isPasswordCorrect) {
             res.status(400).json({ success: false, message: "Incorrect password" })
             console.log("pass")
             return
@@ -109,11 +113,11 @@ exports.postLogin = async (req, res) => {
         )
 
         if (user.role === "Admin") {
-            res.cookie("token", token, { httpOnly: true })
+            res.cookie("auth", 'true', { maxAge:900000 })
             return res.redirect("/admin/users")
         } else {
             console.log(user._id)
-            res.cookie("token", token, { httpOnly: true })
+            res.cookie("authuser", 'user', { maxAge:900000 })
             return res.redirect(`/profile/${user._id}`)
         }
     } catch (error) {
@@ -125,18 +129,12 @@ exports.postLogin = async (req, res) => {
 // POST Logout
 exports.logout = (req, res) => {
     try {
-        // Clear the cookie on the client
-        res.clearCookie("jwt")
-
-        req.session.destroy((err) => {
-            if (err) {
-                console.log(err)
-            } else {
-                res.redirect("/login")
-            }
-        })
-        // Send a success response
-        res.status(200).json(res.redirect("/"))
+        if(req.cookies.auth){
+            res.clearCookie('auth')
+        }else if (req.cookies.authuser){
+            res.clearCookie('authuser')
+        }
+            res.redirect('/')
     } catch (error) {
         res.status(500).json({ message: "Something went wrong" })
         console.log(error)
@@ -146,5 +144,5 @@ exports.logout = (req, res) => {
 exports.main=async(req,res)=>{
     const {role}=req.body
     const user=await UserModel.findById(req.params.id)
-    res.render('layout/main',{user:user})
+    res.render('layout/main',{user:user, adminlogin:req.cookies.auth, userlogin:req.cookies.authuser, id:req.params.id})
 }

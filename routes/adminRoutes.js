@@ -4,17 +4,20 @@ const authMiddleware = require('../middleware/authMiddleware')
 
 const router = express.Router()
 
-// Получение всех пользователей
+// Users
 router.get('/admin/users', adminController.getUsers)
-
-// Добавление пользователя
 router.post('/admin/users/create', adminController.createUser)
-
-// Удаление пользователя
 router.post('/admin/users/delete/:id', adminController.deleteUser)
-
-// Обновление пользователя
 router.post('/admin/users/update/:id', adminController.updateUser)
-// router.post('/admin/users/update/:id/ai', adminController.updateUserAi)
+
+// Courses
+router.get('/admin/courses', adminController.getCourses)
+router.post('/admin/courses/delete/:id/course', adminController.deleteCourse)
+router.post('/admin/courses/approve/:id/course', adminController.approveCourse)
+router.post('/admin/courses/reject/:id/course', adminController.rejectCourse)
+
+// Helps
+router.get('/admin/helps', adminController.getHelps)
+router.post('/admin/helps/delete/:id', adminController.deleteHelps)
 
 module.exports = router

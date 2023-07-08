@@ -1,5 +1,5 @@
 <!-- create profile modal course -->
-<div class="modal fade" id="updateModal2" tabindex="-1" aria-labelledby="updateModalLabel2" aria-hidden="true">
+<div class="modal fade" id="updateModall" tabindex="-1" aria-labelledby="updateModalLabell" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <form action="/profile/<%= user._id %>/courses" method="POST" enctype="multipart/form-data">
@@ -14,7 +14,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="description" class="form-label">Description</label>
-                        <input type="text" class="form-control" id="description" name="description" required>
+                        <textarea type="text" class="form-control" id="description" name="description" required></textarea>
                     </div>
                     <div class="mb-3">
                         <label for="price" class="form-label">Price</label>
@@ -30,7 +30,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="pdf" class="form-label">Upload:</label>
-                        <input type="file" class="form-control" id="pdf" name="pdf" >
+                        <input type="file" class="form-control" id="pdf" name="pdf" accept=".doc, .docx, .ppt, .pptx, .pdf, .zip">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

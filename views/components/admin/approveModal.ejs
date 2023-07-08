@@ -1,0 +1,23 @@
+<% courses.forEach(function(course, i) { %>
+    <!-- Delete modal -->
+    <div class="modal fade" id="approveModal<%= i %>" tabindex="-1" aria-labelledby="approveModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form action="/admin/courses/approve/<%= course._id %>/course" method="post">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="approveModalLabel">Approve</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h2>Delete User</h2>
+                        <p>Are you sure you want to approve this course?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Approve</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+<% }); %>
