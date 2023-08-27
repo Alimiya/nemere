@@ -2,20 +2,20 @@
 <div class="modal fade" id="updateModala" tabindex="-1" aria-labelledby="updateModalLabela" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form action="/profile/<%= user._id %>/upload" method="POST" enctype="multipart/form-data">
+            <form action="/profile/<%= users._id %>/upload" method="POST" enctype="multipart/form-data">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="updateModalLabel11">Edit Profile</h5>
+                    <h5 class="modal-title" id="updateModalLabel11" data-i18n="update--link">Edit Profile</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="mb-3">
-                        <label for="image" class="form-label">Upload:</label>
+                        <label for="image" class="form-label" data-i18n="upload--link">Upload:</label>
                         <input type="file" class="form-control" id="image" name="image">
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn--link btn btn-secondary" data-bs-dismiss="modal" data-i18n="close--link">Close</button>
+                    <button type="submit" class="btn--link btn btn-primary" data-i18n="save--link">Save changes</button>
                 </div>
             </form>
         </div>

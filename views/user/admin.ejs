@@ -6,28 +6,43 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/i18next/dist/umd/i18next.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/i18next-browser-languagedetector/dist/umd/i18nextBrowserLanguageDetector.min.js"></script>
+    <link rel="stylesheet" href="/css/navbar.css">
     <style>
-        .table-container {
-            margin-top: 20px;
+        .h1button{
+            margin-top: 90px;
+        }
+        #quick-connection{
+            display: none;
+        }
+        #balabaqsha-placeholder{
+            display: none;
+        }
+        #footer{
+            display: none;
         }
     </style>
-    <title>Document</title>
+    <title>Пользователи</title>
 </head>
 <body>
-<button type="button" class="btn btn-danger mr-1" onclick="window.location.href='/'">Main</button>
-<h1>Admin Panel</h1>
+<div id="navbar-placeholder"></div>
+<div id="quick-connection"></div>
+<div id="balabaqsha-placeholder"></div>
+<div id="footer"></div>
+<h1 class="h1button" data-i18n="panel--link">Админ</h1>
 <div class="table-container">
     <table class="table table-striped">
         <thead>
         <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Surname</th>
-            <th>Lastname</th>
-            <th>Email</th>
-            <th>Experience</th>
-            <th>Role</th>
-            <th>Actions</th>
+            <th data-i18n="id--link">ID</th>
+            <th data-i18n="name--link">Имя</th>
+            <th data-i18n="surname--link">Фамилия</th>
+            <th data-i18n="lastname--link">Отчество</th>
+            <th data-i18n="email--link">Почта</th>
+            <th data-i18n="experience--link">Опыт работы</th>
+            <th data-i18n="role--link">Роль</th>
+            <th data-i18n="actions--link">Действия</th>
         </tr>
         </thead>
         <tbody>
@@ -41,8 +56,8 @@
                 <td><%= user.experience %></td>
                 <td><%= user.role %></td>
                 <td>
-                    <button type="button" class="btn btn-primary mr-1" data-bs-toggle="modal" data-bs-target="#updateModal<%= i %>">Edit</button>
-                    <button type="button" class="btn btn-danger mr-1" data-bs-toggle="modal" data-bs-target="#deleteModal<%= i %>">Delete</button>
+                    <button type="button" class="btn--link btn btn-primary mr-1" data-bs-toggle="modal" data-bs-target="#updateModal<%= i %>" data-i18n="update--link">Изменить</button>
+                    <button type="button" class="btn--link btn btn-danger mr-1" data-bs-toggle="modal" data-bs-target="#deleteModal<%= i %>" data-i18n="delete--link">Удалить</button>
                 </td>
             </tr>
 
@@ -57,17 +72,20 @@
 </div>
 <div class="container mt-4">
     <div class="row">
-        <div class="col-md-4">
-            <button type="button" class="btn btn-success btn-group" data-bs-toggle="modal" data-bs-target="#addModal">Add User</button>
-            <button type="button" class="btn btn-primary btn-group" onclick="window.location.href='/admin/courses'">Courses</button>
-            <button type="button" class="btn btn-primary btn-group" onclick="window.location.href='/admin/helps'">Helps</button>
+        <div class="col-md-5 d-flex justify-content-between">
+            <button type="button" class="btn--link btn btn-danger mr-1" onclick="window.location.href='/'" data-i18n="main--link">Главная</button>
+            <button type="button" class="btn--link btn btn-success btn-group" data-bs-toggle="modal" data-bs-target="#addModal" data-i18n="add--link">Добавить</button>
+            <button type="button" class="btn--link btn btn-primary btn-group" onclick="window.location.href='/admin/courses'" data-i18n="courses--link">Курсы</button>
+            <button type="button" class="btn--link btn btn-primary btn-group" onclick="window.location.href='/admin/helps'" data-i18n="helps--link">Заявки</button>
             <form action="/logout" method="get">
-                <button type="submit" class="btn btn-danger btn-group">Logout</button>
+                <button type="submit" class="btn--link btn btn-danger btn-group" data-i18n="logout--link">Выйти</button>
             </form>
         </div>
     </div>
 </div>
 <%- include('../components/admin/addModal');%>
+<script type="module" src="/js/imports.js"></script>
+<script type="module" src="/js/translation.js"></script>
 
 </body>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">

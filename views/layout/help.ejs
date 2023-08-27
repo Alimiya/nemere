@@ -1,20 +1,16 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!--Bootstrap-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
-    <!--Bootstrap-->
-    <title>Document</title>
+    <title>Поддержка</title>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" href="/css/gallery.css">
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/balabaqsha.css">
+    <link rel="stylesheet" href="/css/footer.css">
 </head>
 <body>
-<header>
-    <%- include('../components/header');%>
-</header>
+<%- include('../components/navbar');%>
 <style>
     body {
         background-color: #f2f2f2;
@@ -57,31 +53,33 @@
 </style>
 
 <div class="container">
-    <h1>Feedback Form</h1>
+    <h1>Задайте вопрос</h1>
 
     <form action="/helps" method="post">
         <div class="form-group">
-            <label for="titleH">Title:</label>
+            <label for="titleH">Тема:</label>
             <input type="text" class="form-control" id="titleH" name="titleH" required>
         </div>
 
         <div class="form-group">
-            <label for="descriptionH">Description:</label>
+            <label for="descriptionH">Описание:</label>
             <textarea type="text" class="form-control" id="descriptionH" name="descriptionH" required></textarea>
         </div>
 
         <div class="form-group">
-            <label for="emailH">Email:</label>
+            <label for="emailH">Ваша почта:</label>
             <input type="email" class="form-control" id="emailH" name="emailH" required>
         </div>
 
         <div class="form-group">
-            <label for="phoneH">Phone:</label>
+            <label for="phoneH">Ваш мобильный номер:</label>
             <input type="text" class="form-control" id="phoneH" name="phoneH" inputmode="numeric" pattern="[0-9]*" required>
         </div>
 
-        <button type="submit" class="btn btn-primary">Submit Feedback</button>
+        <button type="submit" class="btn btn-primary">Отправить</button>
     </form>
 </div>
+<%- include('../components/footer');%>
+
 </body>
 </html>

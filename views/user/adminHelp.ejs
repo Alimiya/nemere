@@ -6,26 +6,41 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/i18next/dist/umd/i18next.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/i18next-browser-languagedetector/dist/umd/i18nextBrowserLanguageDetector.min.js"></script>
+    <link rel="stylesheet" href="/css/navbar.css">
     <style>
-        .table-container {
-            margin-top: 20px;
+        .h1button{
+            margin-top: 90px;
+        }
+        #quick-connection{
+            display: none;
+        }
+        #balabaqsha-placeholder{
+            display: none;
+        }
+        #footer{
+            display: none;
         }
     </style>
-    <title>Document</title>
+    <title>Заявки</title>
 </head>
 <body>
-<button type="button" class="btn btn-danger mr-1" onclick="window.location.href='/'">Main</button>
-<h1>Admin Panel</h1>
+<div id="navbar-placeholder"></div>
+<div id="quick-connection"></div>
+<div id="balabaqsha-placeholder"></div>
+<div id="footer"></div>
+<h1 class="h1button" data-i18n="panel--link">Админ</h1>
 <div class="table-container">
     <table class="table table-striped">
         <thead>
         <tr>
-            <th>ID</th>
-            <th>Title</th>
-            <th>Description</th>
-            <th>Phone Number</th>
-            <th>Email</th>
-            <th>Actions</th>
+            <th data-i18n="id--link">ID</th>
+            <th data-i18n="title--link">Тема</th>
+            <th data-i18n="description--link">Описание</th>
+            <th data-i18n="phone--number--link">Мобильный номер</th>
+            <th data-i18n="email--link">Почта</th>
+            <th data-i18n="actions--link">Действия</th>
         </tr>
         </thead>
         <tbody>
@@ -37,7 +52,7 @@
                 <td><%= help.phoneH %></td>
                 <td><%= help.emailH %></td>
                 <td>
-                    <button type="button" class="btn btn-danger mr-1" data-bs-toggle="modal" data-bs-target="#deleteHelpModal<%= i %>">Delete</button>
+                    <button type="button" class="btn--link btn btn-danger mr-1" data-bs-toggle="modal" data-bs-target="#deleteHelpModal<%= i %>" data-i18n="delete--link">Удалить</button>
                 </td>
             </tr>
 
@@ -49,10 +64,13 @@
 </div>
 <div class="container mt-4">
     <div class="row">
-        <div class="col-md-3">
-            <button type="button" class="btn btn-primary btn-group" onclick="window.location.href='/admin/courses'">Courses</button>
-            <button type="button" class="btn btn-primary btn-group" onclick="window.location.href='/admin/users'">Users</button>
-            <button type="button" class="btn btn-danger btn-group" onclick="window.location.href='/'">Logout</button>
+        <div class="col-md-4 d-flex justify-content-between">
+            <button type="button" class="main-btn btn--link btn btn-danger mr-1" onclick="window.location.href='/'" data-i18n="main--link">Главная</button>
+            <button type="button" class="btn--link btn btn-primary btn-group" onclick="window.location.href='/admin/courses'" data-i18n="courses--link">Курсы</button>
+            <button type="button" class="btn--link btn btn-primary btn-group" onclick="window.location.href='/admin/users'" data-i18n="users--link">Пользователи</button>
+            <form action="/logout" method="get">
+                <button type="submit" class="btn--link btn btn-danger btn-group" data-i18n="logout--link">Выйти</button>
+            </form>
 
         </div>
     </div>
@@ -64,4 +82,6 @@
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script type="module" src="/js/imports.js"></script>
+<script type="module" src="/js/translation.js"></script>
 </html>

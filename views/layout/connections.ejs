@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Связь</title>
+    <link rel="stylesheet" href="/css/connections.css">
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/balabaqsha.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/quickConnection.css">
+</head>
+<body>
+<div>
+    <div id="navbar-placeholder"></div>
+
+    <%- include('../components/balabaqsha');%>
+    <div class="map">
+        <div id="map"></div>
+    </div>
+    <%- include('../components/footer');%>
+    <%- include('../components/quickConnection'); %>
+    <script type="module" src="/js/imports.js"></script>
+    <script type="module" src="/js/translation.js"></script>
+    <script src="/js/quickConnection.js"></script>
+    <script src="/js/connections.js"></script>
+</div>
+</body>
+</html>

@@ -3,7 +3,7 @@ const Course = require('../../models/courseModel')
 // GET /courses
 exports.getAllCourses = async (req, res) => {
     try {
-        const courses = await Course.find({}, { __v: 0, _id: 0 })
+        const courses = await Course.find({}, { __v: 0 })
         res.json(courses)
     } catch (error) {
         res.status(500).json({ error: 'Failed to fetch courses' })
@@ -14,7 +14,7 @@ exports.getAllCourses = async (req, res) => {
 exports.getCourseById = async (req, res) => {
     const { id } = req.params
     try {
-        const course = await Course.findById(id, { __v: 0, _id: 0 })
+        const course = await Course.findById(id, { __v: 0 })
         if (course) {
             res.json(course)
         } else {
@@ -60,7 +60,7 @@ exports.updateCourseById = async (req, res) => {
                 direction,
                 createdAt
             },
-            { new: true, projection: { __v: 0, _id: 0 } }
+            { new: true, projection: { __v: 0 } }
         )
         if (updatedCourse) {
             res.json(updatedCourse)

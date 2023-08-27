@@ -1,0 +1,26 @@
+<section id="nemere__navbar">
+    <div class="nemere__navbar">
+        <div class="navbar__left">
+            <ul class="navbar__items">
+                <li class="navbar__item"><a class="main__link" href="/"><img src="/assets/logo.jpg" alt=""></a></li>
+                <li class="navbar__item" data-i18n="gallery-link"><a href="/gallery">Галерея</a></li>
+                <li class="navbar__item" data-i18n="teachers-link"><a href="/teacher">Біздің мұғалімдер</a></li>
+                <li class="navbar__item" data-i18n="courses-link"><a href="/course">Әдістемелік жәшігі</a></li>
+                <li class="navbar__item" data-i18n="connections-link"><a href="/about">Байланыстар</a></li>
+            </ul>
+        </div>
+        <div class="navbar__right">
+            <ul class="navbar__items">
+                <%if(adminlogin){%>
+                <li class="navbar__item" data-i18n="admin-link"><a href="/admin/users">Админ</a></li>
+                <%}else if(userlogin){%>
+                <li class="navbar__item" data-i18n="profile-link"><a href="/profile/">Профиль</a></li>
+                <%} else{%>
+                <li class="navbar__item" data-i18n="login-link"><a href="/login">Кіру</a></li>
+                <li class="navbar__item" data-i18n="register-link"><a href="/register">Тіркелу</a></li>
+                <%}%>
+                    <li class="navbar__item" data-i18n="translation-link"><a href="#">Каз/Рус</a></li>
+            </ul>
+        </div>
+    </div>
+</section>

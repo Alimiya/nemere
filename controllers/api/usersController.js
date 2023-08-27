@@ -3,7 +3,7 @@ const User = require('../../models/userModel')
 // GET /users
 exports.getAllUsers = async (req, res) => {
     try {
-        const users = await User.find({}, { __v: 0, _id: 0 })
+        const users = await User.find({}, { __v: 0 })
         res.json(users)
     } catch (error) {
         res.status(500).json({ error: 'Failed to fetch users' })
@@ -14,7 +14,7 @@ exports.getAllUsers = async (req, res) => {
 exports.getUserById = async (req, res) => {
     const { id } = req.params
     try {
-        const user = await User.findById(id, { __v: 0, _id: 0 })
+        const user = await User.findById(id, { __v: 0})
         if (user) {
             res.json(user)
         } else {
@@ -64,7 +64,7 @@ exports.updateUserById = async (req, res) => {
                 image,
                 experience
             },
-            { new: true, projection: { __v: 0, _id: 0 } }
+            { new: true, projection: { __v: 0} }
         )
         if (updatedUser) {
             res.json(updatedUser)

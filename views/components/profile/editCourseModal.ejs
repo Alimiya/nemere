@@ -5,33 +5,33 @@
         <div class="modal-content">
             <form action="/profile/<%= course._id %>/courses/update" method="POST">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="updateModalLabel5">Edit</h5>
+                    <h5 class="modal-title" id="updateModalLabel5" data-i18n="update--link">Edit</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="mb-3">
-                        <label for="title" class="form-label">Title</label>
+                        <label for="title" class="form-label" data-i18n="title--link">Title</label>
                         <input type="text" class="form-control" id="title" name="title" value="<%= course.title%>">
                     </div>
                     <div class="mb-3">
-                        <label for="description" class="form-label">Description</label>
+                        <label for="description" class="form-label" data-i18n="description--link">Description</label>
                         <textarea type="text" class="form-control" id="description" name="description"></textarea>
                     </div>
                     <div class="mb-3">
-                        <label for="price" class="form-label">Price</label>
+                        <label for="price" class="form-label" data-i18n="price--link">Price</label>
                         <input type="number" class="form-control" id="price" name="price" value="<%= course.price%>">
                     </div>
                     <div class="mb-3">
-                        <label for="direction" class="form-label">Direction</label>
+                        <label for="direction" class="form-label" data-i18n="direction--link">Direction</label>
                         <select class="form-control" id="direction" name="direction" value="<%= course.direction%>">
-                            <option value="Работа с родителями">Работа с родителями</option>
-                            <option value="Работа с детьми">Работа с детьми</option>
-                            <option value="Личный опыт">Личный опыт</option>
+                            <option value="Работа с родителями" data-i18n="work-parents">Работа с родителями</option>
+                            <option value="Работа с детьми" data-i18n="work-kids">Работа с детьми</option>
+                            <option value="Личный опыт" data-i18n="personal-experience">Личный опыт</option>
                         </select>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Save changes</button>
+                        <button type="button" class="btn--link btn btn-secondary" data-bs-dismiss="modal" data-i18n="close--link">Close</button>
+                        <button type="submit" class="btn--link btn btn-primary" data-i18n="save--link">Save changes</button>
                     </div>
                 </div>
             </form>

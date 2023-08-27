@@ -11,18 +11,18 @@ exports.getProfile = async (req, res) => {
     // const {name, surname, email, role}=req.body
     try {
         // Get the user's information from the database
-        const user = await UserModel.findById(req.params.id)
+        const users = await UserModel.findById(req.params.id)
         const course = await CourseModel.find({user_id:req.params.id})
         console.log(course)
-        console.log(user)
-        if (!user) {
+        console.log(users)
+        if (!users) {
             console.log("no user")
             return res.status(404).send("User not found")
         }
         // Render the profile page with the user's name
         if (req.cookies.authuser === 'user') {
             res.render("user/profile", {
-                user: user,
+                users: users,
                 courses: course,
                 adminlogin: req.cookies.auth,
                 userlogin: req.cookies.authuser

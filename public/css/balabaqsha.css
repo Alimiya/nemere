@@ -1,0 +1,59 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif, 'Roboto Light';
+}
+
+
+#nemere__main {
+    padding-top: 100px;
+    height: 100vh;
+}
+
+.nemere__main {
+    display: flex;
+}
+
+.main__left {
+    margin: 30px;
+}
+
+.main__logo {
+    width: 495px;
+    height: 177px;
+    margin: 0 35px 20px 35px;
+}
+
+.main__title {
+    display: flex;
+    flex-direction: column;
+    color: #331B3B;
+    font-size: 48px;
+    font-weight: 300;
+    margin-top: 20px;
+    margin-left: 145px;
+}
+
+.main__subtitle {
+    width: 60%;
+    font-size: 24px;
+    font-weight: 300;
+    margin-top: 30px;
+    line-height: 99.8%;
+    letter-spacing: 5px;
+    margin-left: 145px;
+}
+
+.main__picture {
+    margin: -100px 0 0 0;
+    z-index: 1;
+}
+
+.main__ellipse {
+    transform: rotate(358deg);
+    position: absolute;
+    top: 644px;
+    left: -21px;
+    z-index: 1;
+}

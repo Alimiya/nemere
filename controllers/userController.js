@@ -117,7 +117,7 @@ exports.postLogin = async (req, res) => {
             return res.redirect("/admin/users")
         } else {
             console.log(user._id)
-            res.cookie("authuser", 'user', { maxAge:900000 })
+            res.cookie("authuser", "user", { maxAge:900000 })
             return res.redirect(`/profile/${user._id}`)
         }
     } catch (error) {
@@ -142,7 +142,21 @@ exports.logout = (req, res) => {
 }
 
 exports.main=async(req,res)=>{
-    const {role}=req.body
-    const user=await UserModel.findById(req.params.id)
-    res.render('layout/main',{user:user, adminlogin:req.cookies.auth, userlogin:req.cookies.authuser, id:req.params.id})
+    const users=await UserModel.findById(req.params.id)
+    res.render('layout/index',{users:users, adminlogin:req.cookies.auth, userlogin:req.cookies.authuser, id:req.params.id})
+}
+exports.about=async(req,res)=>{
+    const users=await UserModel.findById(req.params.id)
+    res.render('layout/connections',{users:users, adminlogin:req.cookies.auth, userlogin:req.cookies.authuser, id:req.params.id})
+}
+exports.gallery=async(req,res)=>{
+    const users=await UserModel.findById(req.params.id)
+    res.render('layout/grid-gallery',{users:users, adminlogin:req.cookies.auth, userlogin:req.cookies.authuser, id:req.params.id})
+}
+
+exports.navbar=async(req,res)=>{
+    console.log(req.body)
+    console.log(req.params.id)
+    const users=await UserModel.findById(req.params.id)
+    res.render('components/navbar',{users:users, adminlogin:req.cookies.auth, userlogin:req.cookies.authuser, _id:req.params.id})
 }

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/quickConnection.css">
+    <script src="/quickConnection.js"></script>
+</head>
+<body>
+<button id="staticButton"><img src="/assets/phone-icon.png" alt=""></button>
+<div id="formContainer" class="hidden">
+    <form action="/helps" method="post">
+        <h2 class="quick-connection__title">Жылдам байланыс</h2>
+        <div class="form-group">
+            <label for="titleH" class="quick-connection__label-name">Тақырып:</label>
+            <input type="text" id="titleH" placeholder="Сіздің атыңыз" class="quick-connection__input-name" name="titleH" required>
+        </div>
+        <div class="form-group">
+            <label for="descriptionH" class="quick-connection__label-article">Сіздің хабарламаңыз:</label>
+            <input type="text" id="descriptionH" placeholder="Сіздің хабарламаңыз" class="quick-connection__input-article" name="descriptionH" required>
+        </div>
+        <div class="form-group">
+            <label for="phoneH" class="quick-connection__label-theme">Нөміріңіз:</label>
+            <input type="text" id="phoneH" placeholder="Сіздің нөміріңіз" class="quick-connection__input-theme" name="phoneH" required>
+        </div>
+        <div class="form-group">
+            <label for="emailH" class="quick-connection__label-email">Сіздің электрондық поштаңыз:</label>
+            <input type="email" id="emailH" placeholder="Сіздің электрондық поштаңыз" class="quick-connection__input-email" name="emailH" required>
+        </div>
+        <button type="submit" class="quick-connection__btn">Жіберу</button>
+    </form>
+</div>
+</body>
+</html>

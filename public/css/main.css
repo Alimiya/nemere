@@ -1,0 +1,186 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif, 'Roboto Light';
+}
+
+/* why-do-they-love-us */
+
+#why-do-they-love-us {
+    background-color: #EDE2DC;
+    border-radius: 0 400px 0 0;
+    height: 600px;
+    position: relative;
+    z-index: 5;
+}
+
+.why-do-they-love-us {
+    padding-top: 50px;
+}
+
+.why-do-they-love-us__title {
+    font-size: 64px;
+    font-weight: 300;
+    text-align: center;
+}
+
+.why-do-they-love-us__line {
+    position: relative;
+    width: 406px;
+    margin: 20px auto;
+    border-top: 10px solid #FDC221;
+}
+
+.why-do-they-love-us__blocks {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 100px;
+}
+
+.block {
+    width: 250px;
+    padding-top: 20px;
+    text-align: center;
+    background-color: white;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.image-first {
+    background-color: #FFDED4;
+    border-radius: 10px;
+}
+
+.image-second {
+    background-color: #FFEED4;
+    border-radius: 10px;
+}
+
+.image-third {
+    background-color: #D4F0FF;
+    border-radius: 10px;
+}
+
+.image-fourth {
+    background-color: #FFD4D4;
+    border-radius: 10px;
+}
+
+.image-text {
+    margin-top: 15px;
+    font-size: 24px;
+}
+
+#text-container {
+    margin: 20px 0 0 100px;
+    display: flex;
+}
+
+#text-container h1 {
+    font-size: 50px;
+    font-weight: 400;
+}
+
+#text-container p {
+    width: 80%;
+    font-size: 24px;
+    color: gray;
+    margin-top: 30px;
+    text-align: justify;
+}
+
+#text-container img {
+    margin-right: 50px;
+    border-radius: 20px;
+}
+
+/* Our teachers */
+#our-teachers {
+    height: auto;
+}
+
+.our-teachers {
+    position: relative;
+    padding-top: 60px;
+}
+
+.our-teachers__title {
+    font-size: 64px;
+    font-weight: 300;
+    text-align: center;
+}
+
+.teachers {
+    padding: 80px 0 0 90px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5px;
+}
+
+.teacher {
+    width: 20%;
+    z-index: 95;
+}
+
+.teacher__img {
+    border-radius: 50%;
+}
+
+.teacher-twelve {
+    width: 186px;
+    height: 184px;
+}
+
+.first, .eight {
+    transform: scaleX(-1);
+}
+
+.teacher__fio {
+    width: 85%;
+    font-size: 24px;
+    font-weight: 400;
+    text-align: center;
+    margin-left: -10%;
+}
+
+.teacher-ellipse {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    top: 50px;
+    left: 0;
+    z-index: 1;
+}
+
+/* Go to gallery */
+.our-gallery {
+    min-height: 100vh;
+    margin-top: 150px;
+}
+
+.our-gallery__title {
+    font-size: 64px;
+    font-weight: 300;
+    text-align: center;
+    margin-bottom: 180px;
+}
+
+.our-gallery__go-to-gallery {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.our-gallery__btn {
+    width: 15%;
+    height: 66px;
+    background-color: #123D6A;
+    border-radius: 10px;
+    font-size: 22px;
+    font-weight: 500;
+    color: #fff;
+    margin-bottom: 20px;
+    cursor: pointer;
+}

@@ -5,16 +5,16 @@
             <div class="modal-content">
                 <form action="/admin/courses/approve/<%= course._id %>/course" method="post">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="approveModalLabel">Approve</h5>
+                        <h5 class="modal-title" id="approveModalLabel" data-i18n="approve--link">Одобрить</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <h2>Delete User</h2>
-                        <p>Are you sure you want to approve this course?</p>
+                        <h2 class="btn--link" data-i18n="approve--course--link">Одобрить курс</h2>
+                        <p class="btn--link" data-i18n="approve--course--text--link">Вы уверены что хотите одобрить этот курс?</p>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Approve</button>
+                        <button type="button" class="btn--link btn btn-secondary" data-bs-dismiss="modal" data-i18n="close--link">Закрыть</button>
+                        <button type="submit" class="btn--link btn btn-primary" data-i18n="approve--link">Одобрить</button>
                     </div>
                 </form>
             </div>

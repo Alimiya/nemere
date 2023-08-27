@@ -1,65 +1,68 @@
-<header>
-    <%- include('../components/header');%>
-</header>
-<!-- searchForm.ejs -->
-<form action="/course/search" method="GET">
-    <div>
-        <label for="searchQuery">Поиск по названию курса:</label>
-        <input type="text" id="searchQuery" name="searchQuery" value="<%= searchQuery || '' %>" placeholder="Введите название курса">
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" href="/css/courses.css">
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/quickConnection.css">
+    <link rel="stylesheet" href="/css/balabaqsha.css">
+    <script src="https://cdn.jsdelivr.net/npm/i18next/dist/umd/i18next.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/i18next-browser-languagedetector/dist/umd/i18nextBrowserLanguageDetector.min.js"></script>
+</head>
+<body>
+<div id="navbar-placeholder"></div>
+    <div class="filter-control-block">
+        <div class="filter-control">
+            <label for="searchCourseInput" data-i18n="search-course-label">Поиск по названию курса:</label>
+            <input type="text" id="searchCourseInput" placeholder="Введите название курса" data-i18n="search-course-input">
+        </div>
+    
+        <div class="filter-control">
+            <label for="searchFullNameInput" data-i18n="search-name-label">Поиск по ФИО:</label>
+            <input type="text" id="searchFullNameInput" placeholder="Введите ФИО" data-i18n="search-name-input">
+        </div>
+    
+        <div class="filter-control">
+            <label for="filterDirectionSelect" data-i18n="filter-direction-select">Фильтр по направлению:</label>
+            <select id="filterDirectionSelect">
+                <option value="" data-i18n="all-directions">Все направления</option>
+                <option value="Работа с родителями" data-i18n="work-parents">Работа с родителями</option>
+                <option value="Работа с детьми" data-i18n="work-kids">Работа с детьми</option>
+                <option value="Личный опыт" data-i18n="personal-experience">Личный опыт</option>
+            </select>
+        </div>
+    
+        <div class="filter-control">
+            <label for="minPriceInput" data-i18n="min-price-label">Минимальная цена:</label>
+            <input type="number" id="minPriceInput" placeholder="Минимальная цена" data-i18n="min-price-input">
+        </div>
+    
+        <div class="filter-control">
+            <label for="maxPriceInput" data-i18n="max-price-label">Максимальная цена:</label>
+            <input type="number" id="maxPriceInput" placeholder="Максимальная цена" data-i18n="max-price-input">
+        </div>
+    
+        <div class="filter-control">
+            <label for="sortSelect" data-i18n="sort-select-label">Сортировка:</label>
+            <select id="sortSelect">
+                <option value="" data-i18n="sort">Сортировка</option>
+                <option value="nameAsc" data-i18n="name-asc">От А до Я</option>
+                <option value="nameDesc" data-i18n="name-desc">От Я до А</option>
+                <option value="dateAsc" data-i18n="date-asc">Новые курсы (по дате)</option>
+                <option value="dateDesc" data-i18n="date-desc">Старые курсы (по дате)</option>
+            </select>
+        </div>
     </div>
-    <div>
-        <label for="searchQueryFio">Поиск по фио:</label>
-        <input type="text" id="searchQueryFio" name="searchQueryFio" value="<%= searchQueryFio || '' %>" placeholder="Введите фио">
-    </div>
-    <div>
-        <label for="directionFilter">Фильтр по направлению:</label>
-        <input type="checkbox" id="directionFilter1" name="directionFilter" value="Работа с родителями" <% if (directionFilter && directionFilter.includes('Работа с родителями')) { %> checked <% } %>>
-        <label for="directionFilter1">Работа с родителями</label>
-        <input type="checkbox" id="directionFilter2" name="directionFilter" value="Работа с детьми" <% if (directionFilter && directionFilter.includes('Работа с детьми')) { %> checked <% } %>>
-        <label for="directionFilter2">Работа с детьми</label>
-        <input type="checkbox" id="directionFilter3" name="directionFilter" value="Личный опыт" <% if (directionFilter && directionFilter.includes('Личный опыт')) { %> checked <% } %>>
-        <label for="directionFilter3">Личный опыт</label>
-    </div>
-    <div>
-        <label for="minPrice">Минимальная цена:</label>
-        <input type="number" id="minPrice" name="minPrice" value="<%= minPrice || '0' %>">
-    </div>
-    <div>
-        <label for="maxPrice">Максимальная цена:</label>
-        <input type="number" id="maxPrice" name="maxPrice" value="<%= maxPrice || '10000' %>">
-    </div>
-    <div>
-        <label for="sort">Сортировка:</label>
-        <select id="sort" name="sort">
-            <option value="">-- Выберите --</option>
-            <option value="az" <% if (sort === 'az') { %> selected <% } %>>От А до Я</option>
-            <option value="za" <% if (sort === 'za') { %> selected <% } %>>От Я до А</option>
-            <option value="newest" <% if (sort === 'newest') { %> selected <% } %>>Новые курсы</option>
-            <option value="oldest" <% if (sort === 'oldest') { %> selected <% } %>>Старые курсы</option>
-        </select>
-    </div>
-    <div>
-        <button type="submit">Поиск</button>
-    </div>
-</form>
+
 
 <!-- searchResults.ejs -->
-<h1>Результаты поиска</h1>
-
-<ul>
-    <% courses.forEach((course) => { %>
-    <%if(course.status!=='в обработке'){%>
-        <li>
-            <p>Фио <%=course.fio%></p>
-            <p>Название <%= course.title %></p>
-            <p> Цена <%= course.price %></p>
-            <p>Направление <%= course.direction %></p>
-            <p> Дата создания <%= course.createdAt.toLocaleDateString('ru-RU', { day: '2-digit', month: '2-digit', year: 'numeric' }) %></p>
-            <form action="/course/read/<%=course._id%>" method="get">
-                <button type="submit">Read More</button>
-            </form>
-            <!-- Дополнительная информация о курсе -->
-        </li>
-    <%} else{null}%>
-    <% }); %>
-</ul>
+<div id="courses-container"></div>
+<%- include('../components/footer');%>
+<%- include('../components/quickConnection'); %>
+<script type="module" src="/js/imports.js"></script>
+<script type="module" src="/js/translation.js"></script>
+<script src="/js/quickConnection.js"></script>
+<script src="/js/courses.js"></script>
+</body>

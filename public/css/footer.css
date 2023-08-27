@@ -1,0 +1,81 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif, 'Roboto Light';
+}
+
+#footer {
+    background-color: #123D6A;
+    padding: 0;
+    text-align: center;
+    position: relative;
+    z-index: 98;
+    border-radius: 0 158px 0 0;
+}
+
+.footer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    max-width: 900px;
+    margin: 0 auto;
+    z-index: 99;
+}
+
+.footer__top {
+    display: flex;
+}
+
+.footer__about-company {
+    width: 100%;
+    margin: 10px;
+    padding: 15px;
+}
+
+.about-company__title {
+    font-size: 32px;
+    color: #FFF;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.about-company__subtitle {
+    color: #FFF;
+    line-height: 1.5;
+    font-size: 24px;
+    text-align: justify;
+}
+
+.footer__social-networks {
+    display: flex;
+    flex-direction: column;
+}
+
+.social-networks__top {
+    display: flex;
+    flex-direction: column;
+}
+
+.social-network {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.social-network__paragraph {
+    color: #FFF;
+    line-height: 1.5;
+    font-size: 24px;
+    text-align: justify;
+    width: 118%;
+    margin: 10px;
+}
+
+.footer__email {
+    text-align: center;
+    color: #FFF;
+    font-size: 32px;
+    text-decoration: underline;
+    margin-bottom: 15px;
+}

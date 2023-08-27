@@ -1,0 +1,54 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+#course-info-container {
+    max-width: 30%;
+    margin: 150px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+h2 {
+    font-size: 24px;
+    margin: 0;
+}
+
+p {
+    font-size: 16px;
+    margin: 5px 0;
+}
+
+.price {
+    font-weight: bold;
+}
+
+.direction {
+    font-style: italic;
+}
+
+#courseDescriptionFull {
+    width: 98%;
+    text-align: justify;
+}
+
+.buy-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.buy-button:hover {
+    background-color: #0056b3;
+}
+
+#footer {
+    margin-top: 58px;
+}

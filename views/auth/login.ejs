@@ -7,35 +7,20 @@
     <link rel="stylesheet" href="./css/login_css.css" type="text/css">
     <link rel="stylesheet" href="./css/login_css_for_small.css" type="text/css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="/css/quickConnection.css">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;700&family=Open+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
     <title>Кіру</title>
 </head>
 <body>
 
-
-<!-- <form id="login">
-    <div>
-        <label id="email1" for="email">Электронная почта</label>
-        <input type="email" name="email" id="email">
-    </div>
-    <div>
-        <label id="password1" for="password">Пароль</label>
-        <input type="password" name="password" id="password">
-    </div>
-    <div>
-        <button id = "login1" type="submit">Войти</button>
-    </div>
-</form> -->
-
 <div class="login_form">
     <svg width="1393" height="1080" viewBox="0 0 1393 1080" fill="none" xmlns="http://www.w3.org/2000/svg"
          id="register_back"></svg>
 
-<button onclick="location.href='/'" style="border: none; background-color: transparent;"><img id="logo"
-        src="./assets/logo.png"></button>
+<button onclick="location.href='/'" style="border: none; background-color: transparent; "><img class="main__logo"
+        src="/assets/nemere-logo.jpg"></button>
 
-    <h2 id="balabaksha">Балабақшасы</h2>
     <p id="register">Аккаунтыңыз жоқ па?</p>
     <a href="/register" id="register_a">Тіркелу</a>
     <div>
@@ -43,7 +28,7 @@
         <form name="form" id = "form" method="post">
             <h1 id="login_header">Аккаунтқа кіру</h1>
             <label for="email" id="email1">E-Mail</label>
-            <input name="email" id="email" type="text">
+            <input name="email" id="email" type="email" pattern="^[\w-.]+@([\w-]+.)+[\w-]{2,4}$">
             <label for="password" id="password1">Құпиясөз</label>
             <input name="password" id="password" type="text">
             <button type="submit" id="login1">Кіру</button>
@@ -60,6 +45,8 @@
         </ul>
     </nav>
 </div>
+<%- include('../components/quickConnection'); %>
+<script type="text/javascript" src="/js/quickConnection.js"></script>
 <script>
 
 

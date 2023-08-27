@@ -5,27 +5,36 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="/css/about_css.css" type="text/css">
-    <link rel="stylesheet" href="/css/about_css_for_mobile.css" type="text/css">
-    <link rel="stylesheet" href="/css/about_css_for_small.css" type="text/css">
-    <link rel="stylesheet" href="/css/about_css_tablet.css" type="text/css">
+    <link rel="stylesheet" href="/css/quickConnection.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;700&family=Open+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./css/nav.css" type="text/css">
+    <script src="https://cdn.jsdelivr.net/npm/i18next/dist/umd/i18next.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/i18next-browser-languagedetector/dist/umd/i18nextBrowserLanguageDetector.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;700&family=Open+Sans:wght@300;400;500;700&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="/css/navbar.css" type="text/css">
     <!--Bootstrap-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
+            crossorigin="anonymous"></script>
     <!--Bootstrap-->
     <title>Немере</title>
+    <style>
+        #balabaqsha-placeholder{
+            display: none;
+        }
+        #footer{
+            display: none;
+        }
+    </style>
 </head>
 <body>
-<header>
-    <%- include('../components/header');%>
-</header>
-<section style="background-color: #eee;">
+<div id="navbar-placeholder"></div>
+<div id="balabaqsha-placeholder"></div>
+<div id="footer"></div>
+<section style="background-color: #eee; margin-top: 82px;">
     <div class="container py-5">
         <div class="row">
             <div class="col">
@@ -35,15 +44,21 @@
             <div class="col-lg-4">
                 <div class="card mb-4">
                     <div class="card-body text-center">
-                        <%if(!user.image){%>
-                        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
-                             class="rounded-circle img-fluid" style="width: 100px; height: 100px;">
-                            <%}else{%>
-                                <img src="/uploaded/<%=user.image%>" alt="avatarimage" class="rounded-circle img-fluid" style="width: 300px; height: 300px;">
-                            <%}%>
-                        <div class="d-flex justify-content-center mb-2 mt-2 mr-1">
-                            <button type="button" class="btn btn-primary mr-1" data-bs-toggle="modal" data-bs-target="#updateModal">Edit</button>
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateModala">Upload Photo</button>
+                        <% if(!users.image){ %>
+                            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
+                                 alt="avatar"
+                                 class="rounded-circle img-fluid" style="width: 100px; height: 100px;">
+                        <% }else{ %>
+                        <img src="/uploaded/<%= users.image %>" alt="avatarimage" class="rounded-circle img-fluid"
+                             style="width: 300px; height: 300px;">
+                        <% } %>
+                        <div class="d-flex justify-content-center mb-2 mt-2 mr-1 mx-1">
+                            <button type="button" class="btn--link btn btn-primary mx-3" data-bs-toggle="modal" data-i18n="update--profile--link"
+                                    data-bs-target="#updateModal">Изменить профиль
+                            </button>
+                            <button type="button" class="btn--link btn btn-primary" data-bs-toggle="modal" data-i18n="update--photo--link"
+                                    data-bs-target="#updateModala">Загрузить фото
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -53,55 +68,55 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-sm-3">
-                                <p class="mb-0">Name</p>
+                                <p class="mb-0 btn--link" data-i18n="name--link">Имя</p>
                             </div>
                             <div class="col-sm-9">
-                                <p class="text-muted mb-0"><%= user.name%></p>
+                                <p class="text-muted mb-0 btn--link"><%= users.name %></p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3" >
+                                <p class="mb-0 btn--link" data-i18n="surname--link">Фамилия</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0"><%= users.surname %></p>
                             </div>
                         </div>
                         <hr>
                         <div class="row">
                             <div class="col-sm-3">
-                                <p class="mb-0">Surname</p>
+                                <p class="mb-0 btn--link" data-i18n="lastname--link">Отчество</p>
                             </div>
                             <div class="col-sm-9">
-                                <p class="text-muted mb-0"><%= user.surname%></p>
+                                <p class="text-muted mb-0"><%= users.lastname %></p>
                             </div>
                         </div>
                         <hr>
                         <div class="row">
                             <div class="col-sm-3">
-                                <p class="mb-0">Lastname</p>
+                                <p class="mb-0 btn--link" data-i18n="experience--link">Опыт работы</p>
                             </div>
                             <div class="col-sm-9">
-                                <p class="text-muted mb-0"><%= user.lastname%></p>
+                                <p class="text-muted mb-0"><%= users.experience %></p>
                             </div>
                         </div>
                         <hr>
                         <div class="row">
                             <div class="col-sm-3">
-                                <p class="mb-0">Experience</p>
+                                <p class="mb-0 btn--link" data-i18n="email--link">Почта</p>
                             </div>
                             <div class="col-sm-9">
-                                <p class="text-muted mb-0"><%= user.experience%></p>
+                                <p class="text-muted mb-0"><%= users.email %></p>
                             </div>
                         </div>
                         <hr>
                         <div class="row">
                             <div class="col-sm-3">
-                                <p class="mb-0">Email</p>
+                                <p class="btn--link mb-0" data-i18n="password--link">Пароль</p>
                             </div>
                             <div class="col-sm-9">
-                                <p class="text-muted mb-0"><%= user.email%></p>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <p class="mb-0">Password</p>
-                            </div>
-                            <div class="col-sm-9">
-                                <p class="text-muted mb-0" id="hiddenValue"><%= user.password%></p>
+                                <p class="text-muted mb-0" id="hiddenValue"><%= users.password %></p>
                             </div>
                         </div>
                     </div>
@@ -109,37 +124,51 @@
                 <div class="col-md-12">
                     <div class="card mb-4 mb-md-0">
                         <div class="card-body">
-                            <p class="mb-4"><span class="text-primary font-italic me-1">Courses</span>
+                            <p class="mb-4 btn--link" data-i18n="courses--link"><span class="text-primary font-italic me-1" >Курсы</span>
                             </p>
-                            <ul>
-                                <% courses.forEach((course , i) => { %>
-                                    <li>
-                                        <%= course.title %>
-<!--                                        <%= course.description %>-->
-<!--                                        <%= course.price %>-->
-<!--                                        <%= course.direction %>-->
-<!--                                        <%= course.createdAt.toLocaleDateString('ru-RU', { day: '2-digit', month: '2-digit', year: 'numeric' }) %>-->
-<!--                                        <embed src="/pdf/<%=course.pdf%>" width="500" height="375" type="application/pdf">-->
-                                        <form action="/profile/<%= course._id %>/courses/delete" method="POST">
-                                            <button type="button" class="btn btn-primary mr-1" data-bs-toggle="modal" data-bs-target="#deleteModal<%= i %>">Delete</button>
-                                        </form>
-                                        <%if(course.status === 'в обработке') {%>
-                                            <p style="color: darkorange"><%= course.status%></p>
-                                            <form action="/profile/<%= course._id %>/courses/update" method="post">
-                                                <button type="button" class="btn btn-primary mr-1" data-bs-toggle="modal" data-bs-target="#updateModal<%= i %>">Edit</button>
+                            <ul class="list-inline ">
+                                <% courses.forEach((course, i) => { %>
+                                    <div>
+                                        <li class="d-inline-block mx-2">
+                                            <%= course.title %>
+                                        </li>
+                                        <li class="d-inline-block">
+                                            <% if(course.status === 'В обработке' || course.status ==='Өңдеуде'){ %>
+                                                <p class="btn--link" style="color: darkorange" data-i18n="status--link"><%= course.status %></p>
+                                            <% }else{ %>
+                                                <p class="btn--link" style="color:green" data-i18n="status--link"><%= course.status %></p>
+                                            <% } %>
+                                        </li>
+                                    </div>
+                                    <div>
+                                        <% if(course.status === 'В обработке' || course.status === 'Өңдеуде') { %>
+                                            <li class="d-inline-block">
+                                                <form action="/profile/<%= course._id %>/courses/update" method="post">
+                                                    <button type="button" class="btn--link btn btn-primary mr-1"
+                                                            data-bs-toggle="modal"
+                                                            data-bs-target="#updateModal<%= i %>" data-i18n="update--link">Изменить
+                                                    </button>
+                                                </form>
+                                            </li>
+                                        <% } %>
+                                        <li class="d-inline-block">
+                                            <form action="/profile/<%= course._id %>/courses/delete" method="POST">
+                                                <button type="button" class="btn--link btn btn-primary mr-1"
+                                                        data-bs-toggle="modal" data-bs-target="#deleteModal<%= i %>" data-i18n="delete--link">
+                                                    Удалить
+                                                </button>
                                             </form>
-                                        <%} else{%>
-                                            <p style="color: green"><%= course.status%></p>
-                                            <%}%>
-                                    </li>
-
-                                    <%- include('../components/profile/editCourseModal');%>
-                                    <%- include('../components/profile/deleteCourseModal');%>
-                                    <% }) %>
+                                        </li>
+                                    </div>
+                                    <%- include('../components/profile/editCourseModal'); %>
+                                    <%- include('../components/profile/deleteCourseModal'); %>
+                                <% }) %>
 
                             </ul>
                             <div class="d-flex justify-content-center mb-2 mt-2 mr-1">
-                                <button type="button" class="btn btn-primary mr-1" data-bs-toggle="modal" data-bs-target="#updateModall">Create</button>
+                                <button type="button" class="btn--link btn btn-primary mr-1 " data-bs-toggle="modal"
+                                        data-bs-target="#updateModall" data-i18n="create--link">Создать
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -148,132 +177,12 @@
         </div>
     </div>
 </section>
-<%- include('../components/profile/courseModal');%>
-<%- include('../components/profile/profileModal');%>
-<%- include('../components/profile/photoModal');%>
-<script>
-
-    function changeLanguage(lang) {
-        location.hash = lang;
-        location.reload();
-    }
-
-    var language = {
-        ru: {
-            name: 'Имя',
-            surname: 'Фамилия',
-            email: 'Электронная почта',
-            password: 'Пароль',
-            submit: 'Далее',
-            home: 'Главная',
-            login: 'Логин',
-            registration: 'Регистрация',
-            gallery: 'Галерея',
-            course: 'Курсы',
-            teacher: 'Учителя',
-            profile: 'Профиль',
-            admin: 'Админ',
-            balabaksha: 'Детский Сад',
-            login_text: 'У вас уже есть аккаунт?',
-            login_a: 'Войти',
-            register_header: 'Регистрация',
-            about: 'О нас',
-            zagolovok1: 'Интересно каждому ребенку',
-            about_main: '"Немере" - это детский сад, который заботится о развитии и воспитании детей в возрасте от 2 до 6 лет. В нем создается атмосфера доверия, уважения и заботы, в которой каждый ребенок чувствует себя комфортно и безопасно. Программа включает в себя различные образовательные и развивающие мероприятия, игры и творческие задания, направленные на развитие физических, эмоциональных, социальных и когнитивных навыков. Квалифицированный персонал обеспечивает индивидуальный подход к каждому ребенку с учетом его особенностей и потребностей.  Наш детский сад - это место, где дети могут расти и развиваться, заводить новых друзей и находить вокруг себя удивительный мир.',
-            map_header: 'Наше расположение',
-            poshta: 'Почтовый адрес',
-            poshta_paragraph: 'Казахстан, город Семей, улица Докучаева 7, Детский сад Немере',
-            email_poshta: 'Электронная почта',
-            jumys: 'Рабочее время',
-            jumys_paragraph: 'Понедельник-пятница 8.00 – 18.00 Суббота-воскресенье выходные',
-            balalar: 'Детские часы',
-            balalar_paragraph: 'Понедельник-суббота 9.00 – 17.00 Воскресенье выходной'
-
-
-        },
-        kz: {
-            name: 'Аты',
-            surname: 'Тегі',
-            email: 'Электрондық пошта',
-            password: 'Құпиясөз',
-            submit: 'Тіркеу',
-            home: 'Басты Бет',
-            login: 'Логин',
-            registration: 'Тіркеу',
-            gallery: 'Галерея',
-            course: 'Курстар',
-            teacher: 'Мұғалімдер',
-            profile: 'Профиль',
-            admin: 'Админ',
-            balabaksha: 'Балабақшасы',
-            login_text: 'Аккаунтыңыз бар ма?',
-            login_a: 'Кіру',
-            register_header: 'Аккаунт тіркелу',
-            about: 'Біз туралы',
-            zagolovok1: 'Оқу әр Балаға қызықты',
-            about_main: '"Немере" балабақшасы - бұл 2 жастан 6 жасқа дейінгі балалардың дамуы мен тәрбиесіне қамқорлық жасайтын балабақша. Онда әр бала өзін жайлы және қауіпсіз сезінетін сенім, құрмет және қамқорлық атмосферасы қалыптасады. Бағдарлама физикалық, эмоционалдық, әлеуметтік және когнитивті дағдыларды дамытуға бағытталған әртүрлі білім беру және дамыту әрекеттерін, ойындарды және шығармашылық тапсырмаларды қамтиды. Білікті қызметкерлер әр балаға олардың ерекшеліктері мен қажеттіліктерін ескере отырып, жеке көзқарасты қамтамасыз етеді. "Немере" бағы - бұл балалар өсіп, дами алатын, жаңа достар тауып, айналасындағы таңғажайып әлемді таба алатын орын.',
-            map_header: 'Біздің мекенжайымыз',
-            poshta: 'Пошталық мекенжай',
-            poshta_paragraph: 'Қазақстан, Семей қаласы, Докучаева көшесі 7, Немере балабақшасы',
-            email_poshta: 'Электрондық пошта',
-            jumys: 'Жұмыс уақыты',
-            jumys_paragraph: 'Дүйсенбі-жұма 8.00 – 18.00 Сенбі-жексенбі демалыс күндері',
-            balalar: 'Балалар сағаттары',
-            balalar_paragraph: 'Дүйсенбі-Сенбі 9.00 – 17.00 Жексенбі демалыс күні'
-        }
-    };
-
-
-    if (window.location.hash) {
-
-        if (window.location.hash == "#ru") {
-            home.textContent = language.ru.home;
-            login.textContent = language.ru.login;
-            registration.textContent = language.ru.registration;
-            gallery.textContent = language.ru.gallery;
-            course.textContent = language.ru.course;
-            teacher.textContent = language.ru.teacher;
-            profile.textContent = language.ru.profile;
-            admin.textContent = language.ru.admin;
-            balabaksha.textContent = language.ru.balabaksha;
-            about_main.textContent = language.ru.about_main;
-            zagolovok1.textContent = language.ru.zagolovok1;
-            about.textContent = language.ru.about;
-            map_header.textContent = language.ru.map_header;
-            poshta.textContent = language.ru.poshta;
-            poshta_paragraph.textContent = language.ru.poshta_paragraph;
-            email_poshta.textContent = language.ru.email_poshta;
-            jumys.textContent = language.ru.jumys;
-            jumys_paragraph.textContent = language.ru.jumys_paragraph;
-            balalar.textContent = language.ru.balalar;
-            balalar_paragraph.textContent = language.ru.balalar_paragraph;
-        }
-        else if (window.location.hash == "#kz") {
-            home.textContent = language.kz.home;
-            login.textContent = language.kz.login;
-            registration.textContent = language.kz.registration;
-            gallery.textContent = language.kz.gallery;
-            course.textContent = language.kz.course;
-            teacher.textContent = language.kz.teacher;
-            profile.textContent = language.kz.profile;
-            admin.textContent = language.kz.admin;
-            balabaksha.textContent = language.kz.balabaksha;
-            about_main.textContent = language.kz.about_main;
-            zagolovok1.textContent = language.kz.zagolovok1;
-            about.textContent = language.kz.about;
-            map_header.textContent = language.kz.map_header;
-            poshta.textContent = language.kz.poshta;
-            poshta_paragraph.textContent = language.kz.poshta_paragraph;
-            email_poshta.textContent = language.kz.email_poshta;
-            jumys.textContent = language.kz.jumys;
-            jumys_paragraph.textContent = language.kz.jumys_paragraph;
-            balalar.textContent = language.kz.balalar;
-            balalar_paragraph.textContent = language.kz.balalar_paragraph;
-        }
-    }
-    const hiddenValueElement = document.getElementById('hiddenValue');
-    hiddenValueElement.innerText = '***';
-
-</script>
+<%- include('../components/profile/courseModal'); %>
+<%- include('../components/profile/profileModal'); %>
+<%- include('../components/profile/photoModal'); %>
+<div id="quick-connection"></div>
+<script type="module" src="/js/imports.js"></script>
+<script type="module" src="/js/translation.js"></script>
+<script type="text/javascript" src="/js/quickConnection.js"></script>
 </body>
 </html>

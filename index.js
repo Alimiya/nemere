@@ -2,7 +2,6 @@ const express = require("express")
 const mongoose = require("mongoose")
 const cookieParser = require("cookie-parser")
 const bodyParser = require("body-parser")
-// const session = require("express-session")
 require("dotenv").config({ path: "./config/.env" })
 
 const userRoute = require("./routes/route")
@@ -41,12 +40,6 @@ app.use('/api', usersRoute)
 app.use('/api', coursesRoute)
 app.use('/api', helpRoute)
 
-
-// app.use(session({
-//     secret: 'secretKey',
-//     resave: false,
-//     saveUninitialized: true,
-// }))
 const start = async () => {
     try {
         await mongoose

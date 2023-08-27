@@ -9,7 +9,7 @@ const courseSchema = new mongoose.Schema({
     price: { type: Number, required: true },
     direction: { type: String, enum: ['Работа с родителями', 'Работа с детьми', 'Личный опыт'], required: true },
     createdAt: { type: Date, default: Date.now },
-    status: {type: String, enum: ['отклонен', 'одобрен', 'в обработке'], default:'в обработке'}
+    status: {type: String, enum: ['Отклонен', 'Одобрен', 'В обработке'], default:'В обработке'}
 })
 
 const CourseModel = mongoose.model('CourseModel', courseSchema)

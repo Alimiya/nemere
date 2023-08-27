@@ -3,7 +3,7 @@ const User = require("../../models/userModel");
 
 exports.getHelp = async (req,res) =>{
     try{
-        const helps = await Help.find({},{_id:0, __v:0})
+        const helps = await Help.find({},{ __v:0})
         const user=await User.find()
         res.json(helps)
     } catch(err){
@@ -14,7 +14,7 @@ exports.getHelp = async (req,res) =>{
 exports.getHelpById = async (req, res) => {
     const { id } = req.params
     try {
-        const help = await Help.findById(id, { __v: 0, _id: 0 })
+        const help = await Help.findById(id, { __v: 0})
         if (help) {
             res.json(help)
         } else {

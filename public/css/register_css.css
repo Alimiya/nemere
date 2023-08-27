@@ -50,7 +50,7 @@
     position: absolute;
     width: 26%;
     left: 40%;
-    top: 7%;
+    top: 2%;
     font-family: 'Comfortaa', cursive;
     font-style: normal;
     font-weight: 300;
@@ -63,7 +63,7 @@
     position: absolute;
     width: 26%;
     left: 45%;
-    top: 20%;
+    top: 12%;
     font-family: 'Comfortaa', cursive;
     font-style: normal;
     font-weight: 300;
@@ -76,7 +76,7 @@
     position: absolute;
     width: 26%;
     left: 45%;
-    top: 25%;
+    top: 17%;
     background-color: transparent;
     border: 0.05px solid #ccb9b0;
     font-size: 1vw;
@@ -89,7 +89,7 @@
     position: absolute;
     width: 26%;
     left: 45%;
-    top: 35%;
+    top: 25%;
     font-family: 'Comfortaa', cursive;
     font-style: normal;
     font-weight: 300;
@@ -102,7 +102,7 @@
     position: absolute;
     width: 26%;
     left: 45%;
-    top: 40%;
+    top: 30%;
     background-color: transparent;
     border: 0.05px solid #ccb9b0;
     font-size: 1vw;
@@ -111,11 +111,64 @@
     padding: 0.5%;
     width: 30%;
 }
+
+    #lastname1{
+        position: absolute;
+        width: 26%;
+        left: 45%;
+        top: 38%;
+        font-family: 'Comfortaa', cursive;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 1.5vw;
+        line-height: 99.8%;
+        letter-spacing: -0.01em;
+        color: #331B3B;
+    }
+    #lastname{
+        position: absolute;
+        width: 26%;
+        left: 45%;
+        top: 43%;
+        background-color: transparent;
+        border: 0.05px solid #ccb9b0;
+        font-size: 1vw;
+        height: 3%;
+        outline: 0;
+        padding: 0.5%;
+        width: 30%;
+    }
+    #experience1{
+        position: absolute;
+        width: 26%;
+        left: 45%;
+        top: 51%;
+        font-family: 'Comfortaa', cursive;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 1.5vw;
+        line-height: 99.8%;
+        letter-spacing: -0.01em;
+        color: #331B3B;
+    }
+    #experience{
+        position: absolute;
+        width: 26%;
+        left: 45%;
+        top: 56%;
+        background-color: transparent;
+        border: 0.05px solid #ccb9b0;
+        font-size: 1vw;
+        height: 3%;
+        outline: 0;
+        padding: 0.5%;
+        width: 30%;
+    }
 #email1{
     position: absolute;
     width: 26%;
     left: 45%;
-    top: 50%;
+    top: 64%;
     font-family: 'Comfortaa', cursive;
     font-style: normal;
     font-weight: 300;
@@ -128,7 +181,7 @@
     position: absolute;
     width: 26%;
     left: 45%;
-    top: 55%;
+    top: 69%;
     background-color: transparent;
     border: 0.05px solid #ccb9b0;
     font-size: 1vw;
@@ -141,7 +194,7 @@
     position: absolute;
     width: 26%;
     left: 45%;
-    top: 65%;
+    top: 77%;
     font-family: 'Comfortaa', cursive;
     font-style: normal;
     font-weight: 300;
@@ -154,7 +207,7 @@
     position: absolute;
     width: 26%;
     left: 45%;
-    top: 70%;
+    top: 82%;
     background-color: transparent;
     border: 0.05px solid #ccb9b0;
     font-size: 1vw;
@@ -168,8 +221,8 @@
 }
 #submit1{
     position: absolute;
-    left: 55%;
-    top: 85%;
+    left: 54%;
+    top: 89%;
     width: 13%;
     height: 9%;
     border:none;

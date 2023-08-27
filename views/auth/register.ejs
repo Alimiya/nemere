@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="./css/register_css.css" type="text/css">
     <link rel="stylesheet" href="./css/register_css_for_small.css" type="text/css">
+    <link rel="stylesheet" href="/css/quickConnection.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -17,9 +18,7 @@
 <div class="register_form">
     <svg width="1393" height="1080" viewBox="0 0 1393 1080" fill="none" xmlns="http://www.w3.org/2000/svg"
          id="register_back"></svg>
-    <button onclick="location.href='/'" style="border: none; background-color: transparent;"><img id="logo"
-            src="./assets/logo.png"></button>
-    <h2 id="balabaksha">Балабақшасы</h2>
+    <button onclick="location.href='/'" style="border: none; background-color: transparent; "><img class="main__logo" src="/assets/nemere-logo.jpg"></button>
     <p id="login_text">Аккаунтыңыз бар ма?</p>
     <a href="/login" id="login_a">Кіру</a>
 
@@ -28,17 +27,17 @@
         <form name="form" id ="register" method="post">
             <h1 id="register_header">Аккаунтқа тіркелу</h1>
             <label for="name" id="name1">Аты</label>
-            <input name="name" id="name" type="text" required>
+            <input name="name" id="name" type="text" pattern="^[a-zA-Z]+$" required>
             <label for="surname" id="surname1">Тегі</label>
-            <input name="surname" id="surname" type="text" required>
+            <input name="surname" id="surname" type="text" pattern="^[a-zA-Z]+$" required>
             <label for="lastname" id="lastname1">Әкесінің Аты</label>
-            <input name="lastname" id="lastname" type="text" required>
+            <input name="lastname" id="lastname" type="text" pattern="^[a-zA-Z]+$" required>
             <label for="experience" id="experience1">Жұмыс тәжірибесі</label>
-            <input name="experience" id="experience" type="text" required>
+            <input name="experience" id="experience" type="text" pattern="^[0-9]+$" required>
             <label for="email" id="email1">E-Mail</label>
-            <input name="email" id="email" type="text" required>
+            <input name="email" id="email" type="email" pattern="^[\w-.]+@([\w-]+.)+[\w-]{2,4}$" required>
             <label for="password" id="password1">Құпиясөз</label>
-            <input type = "password" name="password" id="password" type="text" required>
+            <input type = "password" name="password" id="password" required>
             <button type="submit" id="submit1">Тіркелу</button>
         </form>
     </div>
@@ -53,96 +52,9 @@
         </ul>
     </nav>
 </div>
-
+<%- include('../components/quickConnection'); %>
+<script type="text/javascript" src="/js/quickConnection.js"></script>
 <script>
-
-    function changeLanguage(lang) {
-        location.hash = lang;
-        location.reload();
-    }
-
-    var language = {
-        ru: {
-            name: 'Имя',
-            surname: 'Фамилия',
-            email: 'Электронная почта',
-            password: 'Пароль',
-            submit: 'Далее',
-            home: 'Главная',
-            login: 'Логин',
-            registration: 'Регистрация',
-            gallery: 'Галерея',
-            course: 'Курсы',
-            teacher: 'Учителя',
-            profile: 'Профиль',
-            admin: 'Админ',
-            balabaksha: 'Детский Сад',
-            login_text: 'У вас уже есть аккаунт?',
-            login_a: 'Войти',
-            register_header: 'Регистрация'
-        },
-        kz: {
-            name: 'Аты',
-            surname: 'Тегі',
-            email: 'Электрондық пошта',
-            password: 'Құпиясөз',
-            submit: 'Тіркеу',
-            home: 'Басты Бет',
-            login: 'Логин',
-            registration: 'Тіркеу',
-            gallery: 'Галерея',
-            course: 'Курстар',
-            teacher: 'Мұғалімдер',
-            profile: 'Профиль',
-            admin: 'Админ',
-            balabaksha: 'Балабақшасы',
-            login_text: 'Аккаунтыңыз бар ма?',
-            login_a: 'Кіру',
-            register_header: 'Аккаунт тіркелу'
-        }
-    };
-
-
-    if (window.location.hash) {
-
-        if (window.location.hash == "#ru") {
-            name1.textContent =language.ru.name;
-            email1.textContent = language.ru.email;
-            surname1.textContent = language.ru.surname;
-            password1.textContent = language.ru.password;
-            submit1.textContent = language.ru.submit;
-            home.textContent = language.ru.home;
-            login.textContent = language.ru.login;
-            registration.textContent = language.ru.registration;
-            gallery.textContent = language.ru.gallery;
-            course.textContent = language.ru.course;
-            teacher.textContent = language.ru.teacher;
-            profile.textContent = language.ru.profile;
-            admin.textContent = language.ru.admin;
-            balabaksha.textContent = language.ru.balabaksha;
-            login_text.textContent = language.ru.login_text;
-            login_a.textContent = language.ru.login_a;
-            register_header.textContent = language.ru.register_header;
-        }
-        else if (window.location.hash == "#kz") {
-            name1.textContent = language.kz.name;
-            email1.textContent = language.kz.email;
-            surname1.textContent = language.kz.surname;
-            password1.textContent = language.kz.password;
-            submit1.textContent = language.kz.submit;
-            home.textContent = language.kz.home;
-            login.textContent = language.kz.login;
-            registration.textContent = language.kz.registration;
-            gallery.textContent = language.kz.gallery;
-            course.textContent = language.kz.course;
-            teacher.textContent = language.kz.teacher;
-            profile.textContent = language.kz.profile;
-            admin.textContent = language.kz.admin;
-            balabaksha.textContent = language.kz.balabaksha;
-            login_text.textContent = language.kz.login_text;
-            register_header.textContent = language.kz.register_header;
-        }
-    }
 </script>
 </body>
 </html>
