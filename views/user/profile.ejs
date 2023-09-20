@@ -53,12 +53,15 @@
                              style="width: 300px; height: 300px;">
                         <% } %>
                         <div class="d-flex justify-content-center mb-2 mt-2 mr-1 mx-1">
-                            <button type="button" class="btn--link btn btn-primary mx-3" data-bs-toggle="modal" data-i18n="update--profile--link"
+                            <button type="button" class="btn--link btn btn-primary mx-1" data-bs-toggle="modal" data-i18n="update--profile--link"
                                     data-bs-target="#updateModal">Изменить профиль
                             </button>
-                            <button type="button" class="btn--link btn btn-primary" data-bs-toggle="modal" data-i18n="update--photo--link"
+                            <button type="button" class="btn--link btn btn-primary mx-2" data-bs-toggle="modal" data-i18n="update--photo--link"
                                     data-bs-target="#updateModala">Загрузить фото
                             </button>
+                            <form action="/logout" method="get">
+                                <button type="submit" class="btn--link btn btn-danger" data-i18n="logout--link">Выйти</button>
+                            </form>
                         </div>
                     </div>
                 </div>
