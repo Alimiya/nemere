@@ -165,4 +165,34 @@
     body {
         overflow-x: hidden;
     }
+
+    .teacher {
+        width: 30%;
+        margin-bottom: 50%;
+    }
+
+    .teacher__block.left {
+        width: 350px;
+        border-radius: 50px;
+        margin-left: 40%;
+    }
+
+    .teacher__block.right {
+        width: 350px;
+        border-radius: 50px;
+        margin-left: 40%;
+    }
+
+    .medal-img {
+        margin-left: 15%;
+    }
+
+    .medal-right {
+        left: 75%;
+    }
+
+    .teacher__fio {
+        text-align: center;
+        margin-left: -8%;
+    }
 }

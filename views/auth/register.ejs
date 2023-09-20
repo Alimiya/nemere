@@ -1,60 +1,55 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="./css/register_css.css" type="text/css">
-    <link rel="stylesheet" href="./css/register_css_for_small.css" type="text/css">
-    <link rel="stylesheet" href="/css/quickConnection.css">
+    <link rel="stylesheet" href="/css/register.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-            href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;700&family=Open+Sans:wght@300;400;500;700&display=swap"
-            rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;700&family=Open+Sans:wght@300;400;500;700&display=swap"
+          rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/i18next/dist/umd/i18next.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/i18next-browser-languagedetector/dist/umd/i18nextBrowserLanguageDetector.min.js"></script>
     <title>Тіркелу</title>
 </head>
 <body>
-<div class="register_form">
-    <svg width="1393" height="1080" viewBox="0 0 1393 1080" fill="none" xmlns="http://www.w3.org/2000/svg"
-         id="register_back"></svg>
-    <button onclick="location.href='/'" style="border: none; background-color: transparent; "><img class="main__logo" src="/assets/nemere-logo.jpg"></button>
-    <p id="login_text">Аккаунтыңыз бар ма?</p>
-    <a href="/login" id="login_a">Кіру</a>
-
-    <div>
-        <p></p>
-        <form name="form" id ="register" method="post">
-            <h1 id="register_header">Аккаунтқа тіркелу</h1>
-            <label for="name" id="name1">Аты</label>
-            <input name="name" id="name" type="text" pattern="^[a-zA-Z]+$" required>
-            <label for="surname" id="surname1">Тегі</label>
-            <input name="surname" id="surname" type="text" pattern="^[a-zA-Z]+$" required>
-            <label for="lastname" id="lastname1">Әкесінің Аты</label>
-            <input name="lastname" id="lastname" type="text" pattern="^[a-zA-Z]+$" required>
-            <label for="experience" id="experience1">Жұмыс тәжірибесі</label>
-            <input name="experience" id="experience" type="text" pattern="^[0-9]+$" required>
-            <label for="email" id="email1">E-Mail</label>
-            <input name="email" id="email" type="email" pattern="^[\w-.]+@([\w-]+.)+[\w-]{2,4}$" required>
-            <label for="password" id="password1">Құпиясөз</label>
-            <input type = "password" name="password" id="password" required>
-            <button type="submit" id="submit1">Тіркелу</button>
-        </form>
-    </div>
-    <nav style="position:absolute;top:0%;right:0%">
-        <ul>
-            <li style="display: inline-block; list-style-type: none;"> <button onclick="changeLanguage('kz')"
-                    style="border: none; background-color: transparent;"><img src="./assets/kz.png"></button> </button>
-            </li>
-            <li style="display: inline-block; list-style-type: none;"> <button onclick="changeLanguage('ru')"
-                    style="border: none; background-color: transparent;"><img src="./assets/ru.png"></button> </button>
-            </li>
-        </ul>
-    </nav>
+<div id="navbar-placeholder"></div>
+<div class="register-page">
+    <form class="register-page__form" action="/register" method="post">
+        <h1 class="register-page__title" data-i18n="register-page__title"></h1>
+        <div class="register-page__form-items">
+            <div class="form__item">
+                <label for="name" data-i18n="item__name"></label>
+                <input name="name" id="name" pattern="[А-Яа-яЁё]+" title="Please enter only Russian letters" required>
+            </div>
+            <div class="form__item">
+                <label for="surname" data-i18n="item__surname"></label>
+                <input name="surname" id="surname" pattern="[А-Яа-яЁё]+" title="Please enter only Russian letters" required>
+            </div>
+            <div class="form__item">
+                <label for="lastname" data-i18n="item__middleName"></label>
+                <input name="lastname" id="lastname" pattern="[А-Яа-яЁё]+" title="Please enter only Russian letters" required>
+            </div>
+            <div class="form__item">
+                <label for="experience" data-i18n="item__experience"></label>
+                <input name="experience" id="experience" pattern="[0-9]+" title="Please enter only numbers" required>
+            </div>
+            <div class="form__item">
+                <label for="email" data-i18n="label-email"></label>
+                <input name="email" id="email" type="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" required>
+            </div>
+            <div class="form__item">
+                <label for="password" data-i18n="label-password"></label>
+                <input name="password" id="password" type="text" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" required>
+            </div>
+            <div class="btn"><button type="submit" class="register_form__submit-btn" data-i18n="register_form__submit-btn"><a></a></button></div>
+            <p class="form__forgot-acc" data-i18n="form__forgot-acc"></p>
+            <a href="/login" class="register-link" data-i18n="login_form__submit-btn"></a>
+        </div>
+    </form>
 </div>
-<%- include('../components/quickConnection'); %>
-<script type="text/javascript" src="/js/quickConnection.js"></script>
-<script>
-</script>
+<script type="module" src="../imports.js"></script>
+<script type="module" src="../translation/translation.js"></script>
 </body>
 </html>
