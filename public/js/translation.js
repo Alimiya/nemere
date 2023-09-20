@@ -330,6 +330,10 @@ export function initializeLocalization() {
             resources: {
                 kz: {
                     translation: {
+                        "delete--course--link":"Әдістемелікті өшіру",
+                        "delete--course--text--link":"Сіз бұл әдістемелікті өшіргіңіз келетініне сенімдісіз бе?",
+                        "status---link":"Өңдеуде",
+                        "status--link":"Қабылданды",
                         "quick-connection__label-article":"Сіздің сипаттамаңыз:",
                         "quick-connection__input-article":"Сипаттама",
                         "update--profile--link": "Профильді өзгерту",
@@ -471,8 +475,12 @@ export function initializeLocalization() {
                 },
                 ru: {
                     translation: {
+                        "delete--course--link":"Удалить курс",
+                        "delete--course--text--link":"Вы уверены что хотите удалить курс?",
+                        "status---link":"В обработке",
+                        "status--link":"Одобрен",
                         "quick-connection__label-article":"Ваше сообщение:",
-                        "quick-connection__input-article":"Сообщение:",
+                        "quick-connection__input-article":"Сообщение",
                         "update--profile--link": "Изменить профиль",
                         "update--photo--link": "Изменить фото",
                         "create--link": "Создать",
