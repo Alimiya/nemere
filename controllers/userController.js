@@ -123,6 +123,7 @@ exports.logout = (req, res) => {
             res.clearCookie('auth')
         }else if (req.cookies.authuser){
             res.clearCookie('authuser')
+            res.clearCookie('userId')
         }
             res.redirect('/')
     } catch (error) {
