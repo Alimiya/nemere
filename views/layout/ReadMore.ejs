@@ -11,14 +11,8 @@
     <link rel="stylesheet" href="/css/footer.css">
     <link rel="stylesheet" href="/css/courseInfo.css">
 </head>
-<style>
-    #balabaqsha-placeholder{
-        display: none;
-    }
-</style>
 <body>
 <div id="navbar-placeholder"></div>
-<div id="balabaqsha-placeholder"></div>
 <div id="quick-connection"></div>
 <%courses.forEach((course)=>{%>
 <div id="course-info-container">
@@ -28,32 +22,42 @@
     <p id="courseDirection"><span class="direction"><%=course.direction%></span></p>
     <p id="courseDate"><span class="date"></span></p>
     <p id="courseDescriptionFull"><span class="description-full"><%=course.description%></span></p>
-<button class="buy-button" data-i18n="buy-button">Buy</button>
+    <button class="buy-button" data-i18n="buy-button">Buy</button>
 </div>
-
-<form action="/course/comment/<%= course._id%>" method="POST">
-    <label for="comment">Комментарий:</label>
-    <textarea name="comment" id="comment" required></textarea>
-    <label for="rating">Рейтинг:</label>
-    <select name="rating" id="rating" required>
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-    </select>
-
-    <button type="submit" id="comment-button" class="btn ">Отправить комментарий</button>
-</form>
+<div id="course-comments-container">
+    <h3 class="leave-comment" data-i18n="leave-comment"></h3>
+    <form id="comment-form" action="/course/comment/<%= course._id%>" method="POST">
+        <div>
+            <label for="comment" class="comment" data-i18n="comment">Комментарий:</label>
+            <textarea id="comment" name="comment" rows="4" cols="50" required></textarea>
+        </div>
+        <div>
+            <label class="rating" data-i18n="rating">Рейтинг:</label>
+            <div class="rating">
+                <select name="rating" id="rating" required>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+        </div>
+        <button class="course-info__submit-btn" data-i18n="course-info__submit-btn" type="submit">Отправить комментарий</button>
+    </form>
+    <div id="average-rating"></div>
+    <ul id="user-ratings"></ul>
+</div>
 <%})%>
 <%comments.forEach((comment, i)=>{%>
-<ul>
-    <li><%=comment.comment%></li>
-    <li><%=comment.rating%></li>
+
+<ul class="course__ratings-items">
+    <li class="course__ratings-item"><%=comment.comment%></li>
+    <li class="user__ratings-item"><%=comment.rating%></li>
     <%if(adminlogin){%>
-        <button type="button" class="btn btn-danger mr-1" data-bs-toggle="modal" data-bs-target="#deleteReadModal<%= i %>">Delete</button>
-        <%- include('../components/course/deleteReadModal');%>
+    <form action="/course/comment/<%=comment._id%>/delete" method="post">
+        <button type="submit" class="btn btn-danger mr-1">Delete</button>
+    </form>
     <%}%>
 </ul>
 <%})%>

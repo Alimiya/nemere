@@ -114,8 +114,7 @@ exports.createComment = async (req, res) => {
 exports.deleteComment = async (req, res)=> {
     try {
         const commentId = req.params.id
-        const comment = await Comment.findById({_id:commentId})
-        await Comment.findByIdAndDelete(commentId)
+        const comment = await Comment.findByIdAndDelete(commentId)
         res.redirect(`/course/read/${comment.course_id}`)
     } catch (error) {
         console.error('Ошибка удаления запросов:', error)

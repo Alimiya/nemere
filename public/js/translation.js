@@ -89,6 +89,10 @@ async function updateTranslations() {
     courses.forEach(course => {
         if (window.location.pathname === `/course/read/${course._id}`) {
             document.querySelector('.buy-button').textContent = i18next.t('buy-button');
+            document.querySelector('.leave-comment').textContent = i18next.t('leave-comment');
+            document.querySelector('.comment').textContent = i18next.t('comment');
+            document.querySelector('.rating').textContent = i18next.t('rating');
+            document.querySelector('.course-info__submit-btn').textContent = i18next.t('course-info__submit-btn');
         }
     })
 
@@ -471,6 +475,12 @@ export function initializeLocalization() {
                         "item__surname": "Тегі",
                         "item__middleName": "Әкесінің Аты",
                         "item__experience": "Жұмыс тәжірибесі",
+                        "leave-comment": "Пікір қалдыру",
+                        "comment": "Пікір: ",
+                        "rating": "Рейтинг: ",
+                        "rating-on-to-five": "Рейтинг (1-5): ",
+                        "course-info__submit-btn": "Жіберу",
+                        "courseratings": "Пікірлер"
                     }
                 },
                 ru: {
@@ -615,6 +625,12 @@ export function initializeLocalization() {
                         "item__surname": "Фамилия",
                         "item__middleName": "Отчество",
                         "item__experience": "Опыт работы",
+                        "leave-comment": "Оставить комментарий",
+                        "comment": "Комментарий: ",
+                        "rating": "Рейтинг: ",
+                        "rating-on-to-five": "Рейтинг (1-5): ",
+                        "course-info__submit-btn": "Отправить",
+                        "courseratings": "Комментарии"
                     }
                 }
             }
