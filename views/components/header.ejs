@@ -37,7 +37,7 @@
                 <%if(adminlogin){%>
                 <li class="navbar__item__adaptive" data-i18n="admin-link"><a href="/admin/users">Админ</a></li>
                 <%} else if(userlogin){%>
-                <li class="navbar__item__adaptive" data-i18n="profile-link"><a href="/profile/<%= users._id %>">Профиль</a></li>
+                <li class="navbar__item__adaptive" data-i18n="profile-link"><a href="/profile/<%=userId %>">Профиль</a></li>
                 <%} else{%>
                 <li class="navbar__item__adaptive" data-i18n="login-link"><a href="/login">Вход</a></li>
                 <%}%>

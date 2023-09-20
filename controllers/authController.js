@@ -24,8 +24,12 @@ exports.login = async (req, res, next) => {
         if (!isPasswordValid) {
             return res.status(401).json({ error: 'Invalid email or password' })
         }
-        const token = jwt.sign({ userId: user._id, email: user.email }, 'secretKey', { expiresIn: '1h' })
-        req.session.user = user
+        req.session.user = {
+            _id: user._id,
+            email: user.email, // и другие данные, если нужно
+        };
+        console.log("req: "+req.session.user)
+        console.log("user "+user._id)
         if (user.role === 'admin') {
             return res.redirect('/admin/users')
         } else {

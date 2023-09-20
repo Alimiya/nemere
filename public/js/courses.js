@@ -1,63 +1,20 @@
+let courses;
+
 async function getCourses() {
     try {
         const response = await fetch('http://localhost:3000/api/courses');
-        const data = await response.json();
-        console.log(data)
-        return data;
+        return await response.json();
     } catch (error) {
         console.log(error);
     }
 }
 
 async function getData() {
-    const currentLanguage = i18next.language;
-    const newLanguage = currentLanguage === 'kz' ? 'ru' : 'kz';
-    const courses = await getCourses();
-    const coursesContainer = document.getElementById('courses-container');
-
-    courses.forEach(course => {
-        const courseCard = document.createElement('div');
-        courseCard.classList.add('course-card');
-
-        const fullNameElement = document.createElement('h2');
-        fullNameElement.textContent = course.fio;
-
-        const nameElement = document.createElement('h2');
-        nameElement.textContent = course.title;
-
-        const priceElement = document.createElement('p');
-        if (newLanguage === 'kz') {
-            priceElement.innerHTML = 'Баға: <span class="price">' + course.price + ' ₸</span>';
-        } else if (newLanguage === 'ru') {
-            priceElement.innerHTML = 'Цена: <span class="price">' + course.price + ' ₸</span>';
-        }
-
-
-        const directionElement = document.createElement('p');
-        directionElement.innerHTML = 'Направление: <span class="direction">' + course.direction + '</span>';
-
-        const dateElement = document.createElement('p');
-        dateElement.innerHTML = 'Дата создания: <span class="date">' + course.createdAt + '</span>';
-
-        const readMoreBtn = document.createElement('a');
-        readMoreBtn.classList.add('read-more-btn');
-        readMoreBtn.textContent = 'Read more';
-        readMoreBtn.href = '/course/read/' + course._id;
-
-        courseCard.appendChild(fullNameElement);
-        courseCard.appendChild(nameElement);
-        courseCard.appendChild(priceElement);
-        courseCard.appendChild(directionElement);
-        courseCard.appendChild(dateElement);
-        courseCard.appendChild(readMoreBtn);
-
-        coursesContainer.appendChild(courseCard);
-    });
-
+    courses = await getCourses();
     const coursesPerPage = 5;
     let currentPage = 0;
-
-    const totalPages = Math.ceil(courses.length / coursesPerPage);
+    let totalPages = Math.ceil(courses.length / coursesPerPage);
+    const coursesContainer = document.getElementById('courses-container');
 
     function initializePage() {
         currentPage = 0;
@@ -115,52 +72,48 @@ async function getData() {
         });
     }
 
-    function updateCourseList() {
-        const filteredCourses = filterCourses();
-        const sortedCourses = sortCourses(filteredCourses);
+    courses.forEach(course => {
+        const courseCard = document.createElement('div');
+        courseCard.classList.add('course-card');
 
-        sortedCourses.forEach(course => {
-            const courseCard = document.createElement('div');
-            courseCard.classList.add('course-card');
+        const fullNameElement = document.createElement('h2');
+        fullNameElement.textContent = course.fio;
 
-            const fullNameElement = document.createElement('h2');
-            fullNameElement.textContent = course.fio;
+        const nameElement = document.createElement('h2');
+        nameElement.textContent = course.title;
 
-            const nameElement = document.createElement('h2');
-            nameElement.textContent = course.title;
+        const priceElement = document.createElement('p');
+        priceElement.innerHTML = '<span class="courses-paragraph" data-i18n="price-courses"></span> <span class="price">' + course.price + ' ₸.</span>';
 
-            const priceElement = document.createElement('p');
-            priceElement.innerHTML = '<span class="courses-paragraph" data-i18n="price-courses"></span> <span class="price">' + course.price + ' ₸.</span>';
+        const directionElement = document.createElement('p');
+        directionElement.innerHTML = '<span class="courses-paragraph" data-i18n="direction-courses"></span> <span class="direction">' + course.direction + '</span>';
 
-            const directionElement = document.createElement('p');
-            directionElement.innerHTML = '<span class="courses-paragraph" data-i18n="direction-courses"></span> <span class="direction">' + course.direction + '</span>';
+        const createdAt = new Date(course.createdAt);
+        const day = String(createdAt.getDate()).padStart(2, '0');
+        const month = String(createdAt.getMonth() + 1).padStart(2, '0');
+        const year = createdAt.getFullYear();
+        const formattedDate = `${day}/${month}/${year}`;
+        const dateElement = document.createElement('p');
+        dateElement.innerHTML = '<span class="courses-paragraph" data-i18n="date-of-creation-courses"></span> <span class="date">' + formattedDate + '</span>';
 
-            const dateElement = document.createElement('p');
-            dateElement.innerHTML = '<span class="courses-paragraph" data-i18n="date-of-creation-courses"></span> <span class="date">' + course.createdAt + '</span>';
+        const truncatedDescription = truncateDescription(course.description, 20);
+        const descriptionElement = document.createElement('p');
+        descriptionElement.innerHTML = `<span class="courses-paragraph" data-i18n="description-courses"></span> ${truncatedDescription}`;
 
-            const truncatedDescription = truncateDescription(course.description, 20);
-            const descriptionElement = document.createElement('p');
-            descriptionElement.innerHTML = `<span class="courses-paragraph" data-i18n="description-courses"></span> ${truncatedDescription}`;
+        const readMoreBtn = document.createElement('a');
+        readMoreBtn.classList.add('read-more-btn');
+        readMoreBtn.textContent = 'Read more';
+        readMoreBtn.href = '/course/read/' + course._id;
 
-            const readMoreBtn = document.createElement('a');
-            readMoreBtn.id = 'readMoreBtn';
-            readMoreBtn.classList.add('read-more-btn');
-            readMoreBtn.setAttribute('data-i18n', 'read-more-btn');
-            readMoreBtn.textContent = 'Көбірек';
+        courseCard.appendChild(fullNameElement);
+        courseCard.appendChild(nameElement);
+        courseCard.appendChild(priceElement);
+        courseCard.appendChild(directionElement);
+        courseCard.appendChild(dateElement);
+        courseCard.appendChild(readMoreBtn);
 
-            readMoreBtn.href = `/course/read/${course._id}`
-
-            courseCard.appendChild(fullNameElement);
-            courseCard.appendChild(nameElement);
-            courseCard.appendChild(priceElement);
-            courseCard.appendChild(directionElement);
-            courseCard.appendChild(dateElement);
-            courseCard.appendChild(descriptionElement);
-            courseCard.appendChild(readMoreBtn);
-
-            coursesContainer.appendChild(courseCard);
-        });
-    }
+        coursesContainer.appendChild(courseCard);
+    });
 
     function truncateDescription(description, wordLimit) {
         const words = description.split(' ');
@@ -179,7 +132,7 @@ async function getData() {
         const minPriceValue = parseFloat(document.getElementById('minPriceInput').value);
         const maxPriceValue = parseFloat(document.getElementById('maxPriceInput').value);
 
-        const filteredCourses = courses.filter(course => {
+        return courses.filter(course => {
             const nameMatch = course.title.toLowerCase().includes(searchCourseValue);
             const fullNameMatch = course.fio.toLowerCase().includes(searchFullNameValue);
             const directionMatch = filterDirectionValue === '' || course.direction === filterDirectionValue;
@@ -188,32 +141,24 @@ async function getData() {
 
             return nameMatch && fullNameMatch && directionMatch && minPriceMatch && maxPriceMatch;
         });
-
-        return filteredCourses;
     }
 
     function sortCourses(filteredCourses) {
         const sortValue = document.getElementById('sortSelect').value;
 
-        courses.forEach(course=>{
-            const createdAt = new Date(course.createdAt);
-            const day = String(createdAt.getDate()).padStart(2, '0');
-            const month = String(createdAt.getMonth() + 1).padStart(2, '0');
-            const year = createdAt.getFullYear();
-            const formattedDate = `${day}/${month}/${year}`;
         if (sortValue === 'nameAsc') {
-            filteredCourses.sort((a, b) => a.title.localeCompare(b.title));
+            return filteredCourses.sort((a, b) => a.title.localeCompare(b.title));
         } else if (sortValue === 'nameDesc') {
-            filteredCourses.sort((a, b) => b.title.localeCompare(a.title));
+            return filteredCourses.sort((a, b) => b.title.localeCompare(a.title));
         } else if (sortValue === 'dateAsc') {
-            filteredCourses.sort((a, b) => a.formattedDate.getTime() - b.formattedDate.getTime());
+            return filteredCourses.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
         } else if (sortValue === 'dateDesc') {
-            filteredCourses.sort((a, b) => b.formattedDate.getTime() - a.formattedDate.getTime());
+            return filteredCourses.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
         }
-        })
 
         return filteredCourses;
     }
+
 
     function updateCourseList() {
         const coursesContainer = document.getElementById('courses-container');
@@ -235,17 +180,15 @@ async function getData() {
             const priceElement = document.createElement('p');
             priceElement.innerHTML = '<span class="courses-paragraph" data-i18n="price-courses"></span> <span class="price">' + course.price + ' ₸.</span>';
 
-
             const directionElement = document.createElement('p');
             directionElement.innerHTML = '<span class="courses-paragraph" data-i18n="direction-courses"></span> <span class="direction">' + course.direction + '</span>';
 
-
-            const dateElement = document.createElement('p');
             const createdAt = new Date(course.createdAt);
             const day = String(createdAt.getDate()).padStart(2, '0');
             const month = String(createdAt.getMonth() + 1).padStart(2, '0');
             const year = createdAt.getFullYear();
             const formattedDate = `${day}/${month}/${year}`;
+            const dateElement = document.createElement('p');
             dateElement.innerHTML = '<span class="courses-paragraph" data-i18n="date-of-creation-courses"></span> <span class="date">' + formattedDate + '</span>';
 
             const truncatedDescription = truncateDescription(course.description, 20);
@@ -269,16 +212,10 @@ async function getData() {
 
             coursesContainer.appendChild(courseCard);
         });
-    }
 
-    function truncateDescription(description, wordLimit) {
-        const words = description.split(' ');
-
-        if (words.length <= wordLimit) {
-            return description;
-        }
-
-        return words.slice(0, wordLimit).join(' ') + '...';
+        totalPages = sortedCourses.length / coursesPerPage;
+        createPageButtons();
+        showPage(currentPage);
     }
 
     document.getElementById('searchCourseInput').addEventListener('input', updateCourseList);
@@ -287,8 +224,6 @@ async function getData() {
     document.getElementById('minPriceInput').addEventListener('input', updateCourseList);
     document.getElementById('maxPriceInput').addEventListener('input', updateCourseList);
     document.getElementById('sortSelect').addEventListener('change', updateCourseList);
-
-    updateCourseList();
 
     const readMoreBtns = document.querySelectorAll('.read-more-btn');
 
@@ -303,8 +238,7 @@ async function getData() {
         });
     });
 
+    updateCourseList();
 }
 
 getData();
-createPageButtons();
-showPage(currentPage);

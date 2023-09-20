@@ -1,28 +1,21 @@
-
 const UserModel = require("../models/userModel")
-const mongoose = require("mongoose")
-const {ObjectId}=require('mongodb')
 const CourseModel = require("../models/courseModel")
-const User = require("../models/userModel")
-const bcrypt = require("bcryptjs");
+const bcrypt = require("bcryptjs")
 
-// Получение данных профиля GET
 exports.getProfile = async (req, res) => {
-    // const {name, surname, email, role}=req.body
     try {
-        // Get the user's information from the database
         const users = await UserModel.findById(req.params.id)
         const course = await CourseModel.find({user_id:req.params.id})
+        const userId = req.query.userId
         if (!users) {
             return res.status(404).send("User not found")
         }
-        // Render the profile page with the user's name
         if (req.cookies.authuser === 'user') {
             res.render("user/profile", {
                 users: users,
                 courses: course,
                 adminlogin: req.cookies.auth,
-                userlogin: req.cookies.authuser
+                userlogin: req.cookies.authuser,
             })
         } else{res.redirect('/login')}
     } catch (error) {

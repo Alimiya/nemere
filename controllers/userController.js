@@ -100,19 +100,14 @@ exports.postLogin = async (req, res) => {
             res.status(400).json({ success: false, message: "Incorrect password" })
             return
         }
-
-        // Create a JWT token
-        const token = jwt.sign(
-            { email: user.email, id: user._id },
-            process.env.JWT_SECRET,
-            { expiresIn: "1h" }
-        )
-
         if (user.role === "Admin") {
             res.cookie("auth", 'true', { maxAge:900000 })
             return res.redirect("/admin/users")
         } else {
             res.cookie("authuser", "user", { maxAge:900000 })
+            res.cookie("userId", user._id.toString(), { maxAge: 900000 })
+            console.log(req.cookies.userId+" userId")
+            console.log(req.cookies.authuser+" authuser")
             return res.redirect(`/profile/${user._id}`)
         }
     } catch (error) {
@@ -151,5 +146,5 @@ exports.gallery=async(req,res)=>{
 
 exports.navbar=async(req,res)=>{
     const users=await UserModel.findById(req.params.id)
-    res.render('components/header',{users:users, adminlogin:req.cookies.auth, userlogin:req.cookies.authuser, _id:req.params.id})
+    res.render('components/header',{users:users, adminlogin:req.cookies.auth, userlogin:req.cookies.authuser, userId:req.cookies.userId})
 }
