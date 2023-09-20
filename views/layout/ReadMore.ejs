@@ -32,8 +32,6 @@
 </div>
 
 <form action="/course/comment/<%= course._id%>" method="POST">
-    <label for="nick">Введите ваше имя:</label>
-    <input type="text" name="nick" id="nick" required>
     <label for="comment">Комментарий:</label>
     <textarea name="comment" id="comment" required></textarea>
     <label for="rating">Рейтинг:</label>
@@ -51,7 +49,6 @@
 <%})%>
 <%comments.forEach((comment, i)=>{%>
 <ul>
-    <li><%=comment.nick%></li>
     <li><%=comment.comment%></li>
     <li><%=comment.rating%></li>
     <%if(adminlogin){%>
