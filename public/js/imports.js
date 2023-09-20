@@ -8,9 +8,37 @@ fetch("/components/navbar")
     let path = window.location.pathname;
     let currentPagePath = path.split("/").pop();
     const navbarLinks = document.querySelectorAll(".navbar__item a");
+    const burger = document.querySelector('.burger-menu');
+    const nav = document.querySelector('.navbar__items__adaptive');
+    let isMenuOpen = false;
+
+    burger.addEventListener('click', () => {
+        if (isMenuOpen) {
+            nav.style.transform = 'translateX(121%)';
+            burger.classList.remove('open');
+            document.querySelectorAll('.line').forEach(line => line.classList.remove('open'));
+        } else {
+            nav.style.transform = 'translateX(7%)';
+            burger.classList.add('open');
+            document.querySelectorAll('.line').forEach(line => line.classList.add('open'));
+        }
+
+        isMenuOpen = !isMenuOpen;
+    });
+
 
     for (let i = 0; i < navbarLinks.length; i++) {
         let link = navbarLinks[i];
+        let href = link.getAttribute("href");
+
+        if (href.indexOf(currentPagePath) !== -1 && link.className.toLowerCase() !== 'main__link') {
+            link.classList.add("active");
+            break;
+        }
+    }
+
+    for (let i = 0; i < nav.length; i++) {
+        let link = nav[i];
         let href = link.getAttribute("href");
 
         if (href.indexOf(currentPagePath) !== -1 && link.className.toLowerCase() !== 'main__link') {

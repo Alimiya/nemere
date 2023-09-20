@@ -1,6 +1,3 @@
-const directions = ['Работа с родителями', 'Работа с детьми', 'Личный опыт'];
-
-
 async function getCourses() {
     try {
         const response = await fetch('http://localhost:3000/api/courses');
@@ -58,6 +55,124 @@ async function getData() {
         coursesContainer.appendChild(courseCard);
     });
 
+    const coursesPerPage = 5;
+    let currentPage = 0;
+
+    const totalPages = Math.ceil(courses.length / coursesPerPage);
+
+    function initializePage() {
+        currentPage = 0;
+        showPage(currentPage);
+    }
+
+    window.addEventListener('load', initializePage);
+
+    function showPage(page) {
+        const startIndex = page * coursesPerPage;
+        const endIndex = startIndex + coursesPerPage;
+        const courseElements = document.querySelectorAll('.course-card');
+
+        courseElements.forEach((course, index) => {
+            if (index < startIndex || index >= endIndex) {
+                course.classList.add('hidden');
+            } else {
+                course.classList.remove('hidden');
+            }
+        });
+
+        updateActiveButtonStates();
+    }
+
+    function createPageButtons() {
+        const paginationContainer = document.createElement('div');
+        paginationContainer.classList.add('pagination');
+
+        for (let i = 0; i < totalPages; i++) {
+            const pageButton = document.createElement('button');
+
+            pageButton.textContent = i + 1;
+            pageButton.addEventListener('click', () => {
+                currentPage = i;
+                showPage(currentPage);
+                updateActiveButtonStates();
+            });
+
+            paginationContainer.appendChild(pageButton);
+        }
+
+        coursesContainer.appendChild(paginationContainer);
+    }
+
+
+    function updateActiveButtonStates() {
+        const pageButtons = document.querySelectorAll('.pagination button');
+
+        pageButtons.forEach((button, index) => {
+            if (index === currentPage) {
+                button.classList.add('active');
+            } else {
+                button.classList.remove('active');
+            }
+        });
+    }
+
+    function updateCourseList() {
+        const filteredCourses = filterCourses();
+        const sortedCourses = sortCourses(filteredCourses);
+
+        sortedCourses.forEach(course => {
+            const courseCard = document.createElement('div');
+            courseCard.classList.add('course-card');
+
+            const fullNameElement = document.createElement('h2');
+            fullNameElement.textContent = course.fio;
+
+            const nameElement = document.createElement('h2');
+            nameElement.textContent = course.title;
+
+            const priceElement = document.createElement('p');
+            priceElement.innerHTML = '<span class="courses-paragraph" data-i18n="price-courses"></span> <span class="price">' + course.price + ' ₸.</span>';
+
+            const directionElement = document.createElement('p');
+            directionElement.innerHTML = '<span class="courses-paragraph" data-i18n="direction-courses"></span> <span class="direction">' + course.direction + '</span>';
+
+            const dateElement = document.createElement('p');
+            dateElement.innerHTML = '<span class="courses-paragraph" data-i18n="date-of-creation-courses"></span> <span class="date">' + course.createdAt + '</span>';
+
+            const truncatedDescription = truncateDescription(course.description, 20);
+            const descriptionElement = document.createElement('p');
+            descriptionElement.innerHTML = `<span class="courses-paragraph" data-i18n="description-courses"></span> ${truncatedDescription}`;
+
+            const readMoreBtn = document.createElement('a');
+            readMoreBtn.id = 'readMoreBtn';
+            readMoreBtn.classList.add('read-more-btn');
+            readMoreBtn.setAttribute('data-i18n', 'read-more-btn');
+            readMoreBtn.textContent = 'Көбірек';
+
+            readMoreBtn.href = `/course/read/${course._id}`
+
+            courseCard.appendChild(fullNameElement);
+            courseCard.appendChild(nameElement);
+            courseCard.appendChild(priceElement);
+            courseCard.appendChild(directionElement);
+            courseCard.appendChild(dateElement);
+            courseCard.appendChild(descriptionElement);
+            courseCard.appendChild(readMoreBtn);
+
+            coursesContainer.appendChild(courseCard);
+        });
+    }
+
+    function truncateDescription(description, wordLimit) {
+        const words = description.split(' ');
+
+        if (words.length <= wordLimit) {
+            return description;
+        }
+
+        return words.slice(0, wordLimit).join(' ') + '...';
+    }
+
     function filterCourses() {
         const searchCourseValue = document.getElementById('searchCourseInput').value.toLowerCase();
         const searchFullNameValue = document.getElementById('searchFullNameInput').value.toLowerCase();
@@ -81,15 +196,22 @@ async function getData() {
     function sortCourses(filteredCourses) {
         const sortValue = document.getElementById('sortSelect').value;
 
+        courses.forEach(course=>{
+            const createdAt = new Date(course.createdAt);
+            const day = String(createdAt.getDate()).padStart(2, '0');
+            const month = String(createdAt.getMonth() + 1).padStart(2, '0');
+            const year = createdAt.getFullYear();
+            const formattedDate = `${day}/${month}/${year}`;
         if (sortValue === 'nameAsc') {
-            filteredCourses.sort((a, b) => a.name.localeCompare(b.name));
+            filteredCourses.sort((a, b) => a.title.localeCompare(b.title));
         } else if (sortValue === 'nameDesc') {
-            filteredCourses.sort((a, b) => b.name.localeCompare(a.name));
+            filteredCourses.sort((a, b) => b.title.localeCompare(a.title));
         } else if (sortValue === 'dateAsc') {
-            filteredCourses.sort((a, b) => a.date.getTime() - b.date.getTime());
+            filteredCourses.sort((a, b) => a.formattedDate.getTime() - b.formattedDate.getTime());
         } else if (sortValue === 'dateDesc') {
-            filteredCourses.sort((a, b) => b.date.getTime() - a.date.getTime());
+            filteredCourses.sort((a, b) => b.formattedDate.getTime() - a.formattedDate.getTime());
         }
+        })
 
         return filteredCourses;
     }
@@ -124,7 +246,7 @@ async function getData() {
             const day = String(createdAt.getDate()).padStart(2, '0');
             const month = String(createdAt.getMonth() + 1).padStart(2, '0');
             const year = createdAt.getFullYear();
-            const formattedDate = `${day}-${month}-${year}`;
+            const formattedDate = `${day}/${month}/${year}`;
             dateElement.innerHTML = '<span class="courses-paragraph" data-i18n="date-of-creation-courses"></span> <span class="date">' + formattedDate + '</span>';
 
             const truncatedDescription = truncateDescription(course.description, 20);
@@ -185,3 +307,5 @@ async function getData() {
 }
 
 getData();
+createPageButtons();
+showPage(currentPage);

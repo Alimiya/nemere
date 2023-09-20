@@ -32,8 +32,8 @@
 
 #formContainer {
     position: fixed;
-    top: 65%;
-    left: 87%;
+    top: 70%;
+    left: 90%;
     transform: translate(-50%, -50%);
     background: #fff;
     padding: 20px;
@@ -99,5 +99,11 @@ button[type="submit"]:hover {
     100% {
         transform: scale(1);
         box-shadow: 0 0 0 0 rgba(41, 128, 185, 0);
+    }
+}
+
+@media (max-width: 768px) {
+    #formContainer {
+        left: 53%;
     }
 }

@@ -12,13 +12,36 @@
 <body>
 <div>
     <div id="navbar-placeholder"></div>
-
-    <%- include('../components/balabaqsha');%>
+    <div id="balabaqsha-placeholder"></div>
     <div class="map">
+        <div class="requisites">
+            <h1 class="requisites__title" data-i18n="requisites__title">Реквизиты</h1>
+            <div class="requisites__address">
+                <h3 class="requisites__address-title" data-i18n="requisites__address-title">Адрес</h3>
+                <p class="requisites__address">Қазақстан, Семей Қаласы, Докучаева көшесі 7, Немере балабақшасы</p>
+            </div>
+            <div class="requisites__social-networks">
+                <h3 class="requisites__social-networks-title" data-i18n="requisites__social-network-title">Әлеуметтік желі</h3>
+                <div class="whatsapp">
+                    <div class="whatsapp__icon">
+                        <a href="https://wa.me/77028416685"><img src="/assets/whatsapp.png" alt=""></a>
+                        <p class="whatsapp__label">Whatsapp</p>
+                    </div>
+                    <p class="whatsapp__number">+7 (702) 841 6685</p>
+                </div>
+                <div class="instagram">
+                    <div class="instagram__icon">
+                        <a href="https://instagram.com/nemeresadik?igshid=MmU2YjMzNjRlOQ=="><img src="/assets/instagram.png" alt=""></a>
+                        <p class="instagram__label">Instagram</p>
+                    </div>
+                    <p class="instagram__tag">@nemeresadik</p>
+                </div>
+            </div>
+        </div>
         <div id="map"></div>
     </div>
-    <%- include('../components/footer');%>
-    <%- include('../components/quickConnection'); %>
+    <div id="footer"></div>
+    <div id="quick-connection"></div>
     <script type="module" src="/js/imports.js"></script>
     <script type="module" src="/js/translation.js"></script>
     <script src="/js/quickConnection.js"></script>

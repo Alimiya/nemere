@@ -57,3 +57,34 @@
     left: -21px;
     z-index: 1;
 }
+
+@media (max-width: 850px) {
+    .main__logo {
+        margin-left: 10%;
+    }
+
+    .main__right, .main__ellipse {
+        display: none;
+    }
+
+    .main__subtitle {
+        width: 60%;
+    }
+}
+
+@media (max-width: 560px) {
+    .main__logo {
+        width: 100%;
+        margin-left: -4%;
+    }
+
+    .main__title {
+        margin-left: -3%;
+    }
+
+    .main__subtitle {
+        width: 100%;
+        margin-left: -2%;
+        text-align: justify;
+    }
+}

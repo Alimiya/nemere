@@ -11,7 +11,7 @@
     align-items: center;
     justify-content: center;
     position: relative;
-    z-index: 99;
+    z-index: 95;
 }
 
 .grid-gallery__img {
@@ -19,4 +19,32 @@
     height: 250px;
     margin: 5px;
     border-radius: 8px;
+}
+
+.swiper-container {
+    display: none;
+}
+
+.swiper-pagination {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    body {
+        overflow-x: hidden;
+    }
+
+    .grid-gallery__img {
+        display: none;
+    }
+
+    .swiper-container {
+        display: block;
+        margin-bottom: 40%;
+        overflow-x: hidden;
+    }
+
+    .swiper-pagination {
+        display: block;
+    }
 }

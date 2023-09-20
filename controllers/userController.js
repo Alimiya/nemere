@@ -158,5 +158,5 @@ exports.navbar=async(req,res)=>{
     console.log(req.body)
     console.log(req.params.id)
     const users=await UserModel.findById(req.params.id)
-    res.render('components/navbar',{users:users, adminlogin:req.cookies.auth, userlogin:req.cookies.authuser, _id:req.params.id})
+    res.render('components/header',{users:users, adminlogin:req.cookies.auth, userlogin:req.cookies.authuser, _id:req.params.id})
 }

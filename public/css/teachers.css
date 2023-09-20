@@ -19,6 +19,7 @@
     padding: 20px;
     display: flex;
     align-items: center;
+    position: relative;
 }
 
 .left {
@@ -30,13 +31,19 @@
     transform: scaleX(-1);
 }
 
+.teacher__block.left .teacher__description {
+    margin-left: 70px;
+}
+
 .teacher__block.right {
     margin: 0 100px 0 auto;
     border-radius: 400px 0 0 0;
+    position: relative;
 }
 
 .teacher__block.right .teacher__description {
     order: -1;
+    margin-left: 100px;
 }
 
 .teacher__block.right img {
@@ -47,10 +54,6 @@
     transform: scaleX(-1);
 }
 
-.teacher__block.right .teacher__description {
-    margin-left: 100px;
-}
-
 .teacher__block img {
     border-radius: 50%;
 }
@@ -58,6 +61,23 @@
 .teacher__img {
     border-radius: 50%;
     margin-right: 10px;
+}
+
+.teacher__eight {
+    width: 186px;
+    height: 184px;
+}
+
+.teacher__thirteen {
+    width: 186px;
+    height: 184px;
+    transform: scaleX(-1);
+}
+
+.teacher__fourteen {
+    width: 186px;
+    height: 184px;
+    transform: scaleX(-1);
 }
 
 .teacher__fio {
@@ -75,17 +95,17 @@
 }
 
 .medal-img {
-    width: 45px;
-    height: 45px;
+    width: 44px;
+    height: 79px;
     position: absolute;
-    top: 5px;
-    left: 280px;
+    top: -9px;
+    left: 220px;
 }
 
 .medal-right {
     position: absolute;
-    left: 1300px;
-    top: 10px;
+    top: -9px;
+    left: 400px;
 }
 
 .teacher-twelve {
@@ -98,4 +118,51 @@
     clear: both;
     position: relative;
     z-index: 1;
+}
+
+@media (max-width: 1500px) {
+    .teacher {
+        margin-top: 10%;
+    }
+}
+
+@media (max-width: 1000px) {
+    .teacher {
+        margin-top: 20%;
+    }
+}
+
+@media (max-width: 768px) {
+    .teacher {
+        margin-bottom: 40%;
+    }
+
+    .teacher__block {
+        flex-direction: column;
+    }
+
+    .teacher__description {
+        margin-left: 31%;
+        margin-top: 5%;
+    }
+
+    .teacher__block.left, .teacher__block.right {
+        margin: 0;
+        border-radius: 0;
+    }
+
+    .medal-img {
+        margin-left: 30%;
+    }
+
+    .teacher__block.right .teacher__description {
+        order: 0;
+        margin-left: 30%;
+    }
+}
+
+@media (max-width: 722px) {
+    body {
+        overflow-x: hidden;
+    }
 }

@@ -8,12 +8,13 @@
     <link rel="stylesheet" href="/css/balabaqsha.css">
     <link rel="stylesheet" href="/css/footer.css">
     <link rel="stylesheet" href="/css/quickConnection.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <script src="https://cdn.jsdelivr.net/npm/i18next/dist/umd/i18next.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/i18next-browser-languagedetector/dist/umd/i18nextBrowserLanguageDetector.min.js"></script>
 </head>
 <body>
 <div id="navbar-placeholder"></div>
-<%- include('../components/balabaqsha');%>
+<div id="balabaqsha-placeholder"></div>
 <div class="grid-gallery">
     <img class="grid-gallery__img" src="/assets/slider1.png" alt="">
     <img class="grid-gallery__img" src="/assets/slider2.png" alt="">
@@ -23,19 +24,77 @@
     <img class="grid-gallery__img" src="/assets/slider6.png" alt="">
     <img class="grid-gallery__img" src="/assets/slider7.png" alt="">
     <img class="grid-gallery__img" src="/assets/slider8.png" alt="">
-    <img class="grid-gallery__img" src="/assets/slider8.png" alt="">
-    <img class="grid-gallery__img" src="/assets/slider8.png" alt="">
-    <img class="grid-gallery__img" src="/assets/slider8.png" alt="">
-    <img class="grid-gallery__img" src="/assets/slider8.png" alt="">
-    <img class="grid-gallery__img" src="/assets/slider8.png" alt="">
-    <img class="grid-gallery__img" src="/assets/slider8.png" alt="">
-    <img class="grid-gallery__img" src="/assets/slider8.png" alt="">
+    <img class="grid-gallery__img" src="/assets/slider9.png" alt="">
+    <img class="grid-gallery__img" src="/assets/slider10.png" alt="">
+    <img class="grid-gallery__img" src="/assets/slider11.png" alt="">
+    <img class="grid-gallery__img" src="/assets/slider12.png" alt="">
+    <img class="grid-gallery__img" src="/assets/slider13.png" alt="">
+    <img class="grid-gallery__img" src="/assets/slider14.png" alt="">
+    <img class="grid-gallery__img" src="/assets/slider15.png" alt="">
+    <img class="grid-gallery__img" src="/assets/slider16.png" alt="">
+    <img class="grid-gallery__img" src="/assets/slider17.png" alt="">
+    <img class="grid-gallery__img" src="/assets/slider18.png" alt="">
+    <img class="grid-gallery__img" src="/assets/slider19.png" alt="">
+    <img class="grid-gallery__img" src="/assets/slider20.png" alt="">
+    <img class="grid-gallery__img" src="/assets/slider21.png" alt="">
 </div>
-<%- include('../components/footer');%>
-<%- include('../components/quickConnection'); %>
+
+<div id="slider-gallery" class="swiper-container">
+    <div class="swiper-wrapper">
+        <img class="swiper-slide" src="/assets/slider1.png" alt="">
+        <img class="swiper-slide" src="/assets/slider2.png" alt="">
+        <img class="swiper-slide" src="/assets/slider3.png" alt="">
+        <img class="swiper-slide" src="/assets/slider4.png" alt="">
+        <img class="swiper-slide" src="/assets/slider5.png" alt="">
+        <img class="swiper-slide" src="/assets/slider6.png" alt="">
+        <img class="swiper-slide" src="/assets/slider7.png" alt="">
+        <img class="swiper-slide" src="/assets/slider8.png" alt="">
+        <img class="swiper-slide" src="/assets/slider9.png" alt="">
+        <img class="swiper-slide" src="/assets/slider10.png" alt="">
+        <img class="swiper-slide" src="/assets/slider11.png" alt="">
+        <img class="swiper-slide" src="/assets/slider12.png" alt="">
+        <img class="swiper-slide" src="/assets/slider13.png" alt="">
+        <img class="swiper-slide" src="/assets/slider14.png" alt="">
+        <img class="swiper-slide" src="/assets/slider15.png" alt="">
+        <img class="swiper-slide" src="/assets/slider16.png" alt="">
+        <img class="swiper-slide" src="/assets/slider17.png" alt="">
+        <img class="swiper-slide" src="/assets/slider18.png" alt="">
+        <img class="swiper-slide" src="/assets/slider19.png" alt="">
+        <img class="swiper-slide" src="/assets/slider20.png" alt="">
+        <img class="swiper-slide" src="/assets/slider21.png" alt="">
+    </div>
+    <div class="swiper-pagination"></div>
+</div>
+<div id="footer"></div>
+<div id="quick-connection"></div>
 
 <script type="module" src="/js/imports.js"></script>
 <script type="module" src="/js/translation.js"></script>
 <script src="/js/quickConnection.js"></script>
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script>
+    new Swiper('#slider-gallery', {
+        effect: 'coverflow',
+        grabCursor: true,
+        centeredSlides: true,
+        loop: true,
+        slidesPerView: 'auto',
+        coverflowEffect: {
+            rotate: 50,
+            stretch: 0,
+            depth: 200,
+            modifier: 1,
+            slideShadows: true
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true
+        },
+        autoplay: {
+            delay: 2500,
+            disableOnInteraction: false,
+        }
+    });
+</script>
 </body>
 </html>

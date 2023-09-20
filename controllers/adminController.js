@@ -112,7 +112,7 @@ exports.deleteCourse = async (req, res)=> {
 exports.approveCourse = async (req, res)=> {
     try {
         const courseId = req.params.id
-        const course = await Course.findByIdAndUpdate(courseId, { status: 'одобрен' })
+        const course = await Course.findByIdAndUpdate(courseId, { status: 'Одобрен' })
         if (!course) {
             return res.status(404).render('error', { message: 'Запрос не найден' })
         }

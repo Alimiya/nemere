@@ -85,7 +85,7 @@
 #text-container p {
     width: 80%;
     font-size: 24px;
-    color: gray;
+    color: rgb(128, 128, 128);
     margin-top: 30px;
     text-align: justify;
 }
@@ -93,6 +93,10 @@
 #text-container img {
     margin-right: 50px;
     border-radius: 20px;
+}
+
+.slider-container {
+    display: none;
 }
 
 /* Our teachers */
@@ -133,8 +137,19 @@
     height: 184px;
 }
 
-.first, .eight {
+.teacher-fourteen {
+    width: 186px;
+    height: 184px;
     transform: scaleX(-1);
+}
+
+.first {
+    transform: scaleX(-1);
+}
+
+.eight {
+    width: 186px;
+    height: 184px;
 }
 
 .teacher__fio {
@@ -183,4 +198,102 @@
     color: #fff;
     margin-bottom: 20px;
     cursor: pointer;
+}
+
+@media (max-width: 850px) {
+    .why-do-they-love-us__title {
+        font-size: 25px;
+        margin-top: 15px;
+    }
+
+    .why-do-they-love-us__line {
+        margin-top: 54px;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        overflow-x: hidden;
+    }
+
+    #why-do-they-love-us {
+        border-radius: 0;
+    }
+
+    .block {
+        display: none;
+    }
+
+    .slider-container {
+        width: 450px;
+        display: block;
+        overflow: hidden;
+    }
+
+    .slider {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+    }
+
+    .slide {
+        flex: 0 0 45%;
+        text-align: center;
+        padding-top: 20px;
+        background-color: white;
+        border-radius: 10px;
+        margin: 0 120px;
+        cursor: pointer;
+    }
+
+    .why-do-they-love-us {
+        max-width: 100%;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .why-do-they-love-us__title {
+        font-size: 30px;
+        font-weight: 300;
+        text-align: center;
+        margin-bottom: 20px;
+        margin-top: 96px;
+    }
+
+    .why-do-they-love-us__line {
+        position: relative;
+        width: 300px;
+        margin: 20px auto;
+        border-top: 10px solid #FDC221;
+    }
+
+    .teachers {
+        padding-right: 180px;
+        gap: 190px;
+    }
+
+    .teacher {
+        width: 10%;
+    }
+
+    .teacher-ellipse {
+        display: none;
+    }
+
+    .our-gallery__btn {
+        width: 30%;
+    }
+
+    #text-container h1 {
+        margin-left: -20%;
+        font-size: 36px;
+    }
+
+    .image-text {
+        font-size: 17px;
+    }
+
+    #text-container p {
+        width: 100%;
+        margin-left: -19%;
+    }
 }

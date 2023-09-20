@@ -1,57 +1,36 @@
 <link rel="stylesheet" href="./css/navbar.css" type="text/css" />
-<nav class="navbar navbar-expand-lg">
-    <div class="container-fluid">
-        <a class="navbar-brand" id="home" href="/">Басты бет</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
-                aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-            <ul class="navbar-nav mx-auto">
-                <li class="nav-item">
-                    <a class="nav-link" id="gallery" href="/gallery" style="font-size: 1.03rem;">Галерея</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="course" href="/course" style="font-size: 1.03rem;">Курсы</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="teacher" href="/teacher" style="font-size: 1.03rem;">Учителя</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="profile" href="/profile/" style="font-size: 1.03rem;">Профиль</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="about" href="/about" style="font-size: 1.03rem;">О нас</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="about" href="/helps" style="font-size: 1.03rem;">Поддержка</a>
-                </li>
+<section id="nemere__navbar">
+    <div class="nemere__navbar">
+        <div class="navbar__left">
+            <ul class="navbar__items">
+                <li class="navbar__item"><a class="main__link" href="/"><img src="/assets/logo.jpg" alt=""></a></li>
+                <li class="navbar__item" data-i18n="gallery-link"><a href="/gallery">Галерея</a></li>
+                <li class="navbar__item" data-i18n="teachers-link"><a href="/teacher">Біздің мұғалімдер</a></li>
+                <li class="navbar__item" data-i18n="courses-link"><a href="/course">Курстар</a></li>
+                <li class="navbar__item" data-i18n="connections-link"><a href="/about">Байланыстар</a></li>
             </ul>
-            <ul class="navbar-nav ml-auto float-right" style="z-index:1">
-                <%if(adminlogin || userlogin){%>
-                    <li class="nav-item">
-                        <button class="btn btn-outline-light text-dark" id="login" onclick="location.href='/logout'"
-                                type="submit" style="font-size: 1.03rem;" >Выйти</button>
-                    </li>
-                <%} else{%>
-                <li class="nav-item">
-                    <button class="btn btn-outline-light text-dark" id="login" onclick="location.href='/login'"
-                            type="submit" style="font-size: 1.03rem;" >Логин</button>
-                </li>
-                <li class="nav-item">
-                    <button class="btn btn-outline-light text-dark" id="registration"
-                            onclick="location.href='/register'" type="submit" style="font-size: 1.03rem;">Регистрация</button>
-                </li>
-                    <%}%>
-                <li class="nav-item">
-                    <button class="btn btn-outline-light text-dark" onclick="changeLanguage('kz')"
-                            type="submit">Қазақша</button>
-                </li>
-                <li class="nav-item">
-                    <button class="btn btn-outline-light text-dark" onclick="changeLanguage('ru')"
-                            type="submit">Русский</button>
-                </li>
+        </div>
+        <div class="navbar__right">
+            <ul class="navbar__items">
+                <li class="navbar__item" data-i18n="login-link"><a href="/login">Вход/Регистрация</a></li>
+                <li class="navbar__item" data-i18n="translation-link"><a href="#">Каз/Рус</a></li>
+            </ul>
+        </div>
+        <div class="burger-menu">
+            <div class="line line1"></div>
+            <div class="line line2"></div>
+            <div class="line line3"></div>
+        </div>
+        <div class="navbar__adaptive">
+            <ul class="navbar__items__adaptive">
+                <li class="navbar__item__adaptive"><a class="main__link" href="/"><img src="/assets/logo.jpg" alt=""></a></li>
+                <li class="navbar__item__adaptive" data-i18n="gallery-link"><a href="/gallery">Галерея</a></li>
+                <li class="navbar__item__adaptive" data-i18n="teachers-link"><a href="/teacher">Біздің мұғалімдер</a></li>
+                <li class="navbar__item__adaptive" data-i18n="courses-link"><a href="/course">Курстар</a></li>
+                <li class="navbar__item__adaptive" data-i18n="connections-link"><a href="/about">Байланыстар</a></li>
+                <li class="navbar__item__adaptive" data-i18n="login-link"><a href="/login">Вход/Регистрация</a></li>
+                <li class="navbar__item__adaptive" data-i18n="translation-link"><a href="#">Каз/Рус</a></li>
             </ul>
         </div>
     </div>
-</nav>
+</section>

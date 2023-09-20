@@ -56,7 +56,7 @@
             <td><%=course.direction%></td>
             <td><%= course.createdAt.toLocaleDateString('ru-RU', { day: '2-digit', month: '2-digit', year: 'numeric' }) %></td>
             <td>
-                <%if(course.status==='в обработке'){%>
+                <%if(course.status==='В обработке' || course.status==='Өңдеуде'){%>
                     <button type="button" class="btn--link btn btn-primary mr-1" data-bs-toggle="modal" data-bs-target="#approveModal<%= i %>" data-i18n="approve--link">Одобрить</button>
                     <button type="button" class="btn--link btn btn-primary mr-1" data-bs-toggle="modal" data-bs-target="#rejectModal<%= i %>" data-i18n="reject--link">Отказать</button>
                 <%} else{%>

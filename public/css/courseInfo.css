@@ -49,6 +49,66 @@ p {
     background-color: #0056b3;
 }
 
+#course-comments-container {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#comment-form {
+    margin-bottom: 20px;
+}
+
+#comment-form label,
+#user-ratings li {
+    font-weight: bold;
+}
+
+#comment,
+#rating {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.course-info__submit-btn {
+    width: 30% !important;
+    background-color: #007BFF !important;
+    color: #fff !important;
+    border: none !important;
+    padding: 10px 20px !important;
+    margin-top: 10px !important;
+    border-radius: 5px !important;
+    cursor: pointer !important;
+}
+
+.course-info__submit-btn {
+    background-color: #0056b3 !important;
+}
+
+#user-ratings {
+    list-style: none;
+    padding: 0;
+}
+
+#user-ratings li {
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#average-rating {
+    font-weight: bold;
+    margin-top: 20px;
+}
+
 #footer {
     margin-top: 58px;
 }

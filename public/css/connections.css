@@ -5,10 +5,8 @@ body {
 
 .map {
     width: 90%;
-    height: 100vh;
+    height: 78vh;
     display: flex;
-    align-items: center;
-    justify-content: center;
     background-color: #EDE2DC;
     position: relative;
     z-index: 2;
@@ -17,10 +15,116 @@ body {
     border-radius: 16px;
 }
 
+.requisites {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 114px;
+    align-items: center;
+    justify-content: center;
+}
+
+.requisites__title {
+    margin-bottom: 30px;
+    margin-right: 263px;
+    text-decoration: underline;
+}
+
+.requisites__address {
+    width: 80%;
+    line-height: 1.5;
+    font-size: 24px;
+    text-align: justify;
+}
+
+.requisites__address-title {
+    font-size: 32px;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.requisites__social-networks {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-left: 105px;
+    margin-top: 44px;
+}
+
+.requisites__social-networks-title {
+    font-size: 32px;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.whatsapp__icon, .instagram__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.whatsapp__label, .instagram__label {
+    line-height: 1.5;
+    font-size: 24px;
+    text-align: justify;
+    width: 118%;
+    margin: 10px;
+}
+
+.whatsapp__number, .instagram__tag {
+    line-height: 1.5;
+    font-size: 24px;
+    text-align: justify;
+    width: 118%;
+    margin: 10px;
+}
+
 #map {
     width: 90%;
     height: 90%;
     overflow: hidden;
     margin-left: 50px;
     margin-top: 20px;
+}
+
+@media (max-width: 1500px) {
+    .map {
+        flex-direction: column;
+    }
+
+    .requisites {
+        margin-left: 140px;
+    }
+}
+
+@media (max-width: 768px) {
+    .map {
+        margin-left: 5%;
+    }
+
+    .requisites {
+        margin-left: 5%;
+    }
+
+    #map {
+        margin-left: 30px;
+    }
+}
+
+@media (max-width: 560px) {
+    .map {
+        margin-left: 3%;
+    }
+
+    .requisites__title {
+        text-align: center;
+        margin-left: 206px;
+    }
+
+    .requisites__social-networks {
+        margin-left: 55px;
+    }
+
+    #map {
+        margin-left: 13px;
+    }
 }

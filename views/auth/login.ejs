@@ -1,130 +1,40 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="./css/login_css.css" type="text/css">
-    <link rel="stylesheet" href="./css/login_css_for_small.css" type="text/css">
+    <link rel="stylesheet" href="/css/login.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="stylesheet" href="/css/quickConnection.css">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;700&family=Open+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;700&family=Open+Sans:wght@300;400;500;700&display=swap"
+          rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/i18next/dist/umd/i18next.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/i18next-browser-languagedetector/dist/umd/i18nextBrowserLanguageDetector.min.js"></script>
     <title>Кіру</title>
 </head>
 <body>
-
-<div class="login_form">
-    <svg width="1393" height="1080" viewBox="0 0 1393 1080" fill="none" xmlns="http://www.w3.org/2000/svg"
-         id="register_back"></svg>
-
-<button onclick="location.href='/'" style="border: none; background-color: transparent; "><img class="main__logo"
-        src="/assets/nemere-logo.jpg"></button>
-
-    <p id="register">Аккаунтыңыз жоқ па?</p>
-    <a href="/register" id="register_a">Тіркелу</a>
-    <div>
-        <p></p>
-        <form name="form" id = "form" method="post">
-            <h1 id="login_header">Аккаунтқа кіру</h1>
-            <label for="email" id="email1">E-Mail</label>
-            <input name="email" id="email" type="email" pattern="^[\w-.]+@([\w-]+.)+[\w-]{2,4}$">
-            <label for="password" id="password1">Құпиясөз</label>
-            <input name="password" id="password" type="text">
-            <button type="submit" id="login1">Кіру</button>
-        </form>
-    </div>
-    <nav style="position:absolute;top:0%;right:0%">
-        <ul>
-            <li style="display: inline-block; list-style-type: none;"> <button onclick="changeLanguage('kz')"
-                    style="border: none; background-color: transparent;"><img src="./assets/kz.png"></button> </button>
-            </li>
-            <li style="display: inline-block; list-style-type: none;"> <button onclick="changeLanguage('ru')"
-                    style="border: none; background-color: transparent;"><img src="./assets/ru.png"></button> </button>
-            </li>
-        </ul>
-    </nav>
+<div id="navbar-placeholder"></div>
+<div class="login-page">
+    <form class="login-page__form" action="/login" method="post">
+        <h1 class="login-page__title" data-i18n="login-page__title"></h1>
+        <div class="login-page__form-items">
+            <div class="form__item">
+                <label for="email" data-i18n="label-email"></label>
+                <input name="email" id="email" type="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" required>
+            </div>
+            <div class="form__item">
+                <label for="password" data-i18n="label-password"></label>
+                <input name="password" id="password" type="text"  required>
+            </div>
+            <div class="btn"><button type="submit" class="login_form__submit-btn" data-i18n="login_form__submit-btn"><a></a></button></div>
+            <p class="form__forgot-acc" data-i18n="form__forgot-acc"></p>
+            <a href="/register" class="register-link" data-i18n="register-link"></a>
+        </div>
+    </form>
 </div>
-<%- include('../components/quickConnection'); %>
-<script type="text/javascript" src="/js/quickConnection.js"></script>
-<script>
 
-
-
-
-    function changeLanguage(lang) {
-        location.hash = lang;
-        location.reload();
-    }
-    var language = {
-        ru: {
-            name: 'Имя',
-            surname: 'Фамилия',
-            email: 'Электронная почта',
-            password: 'Пароль',
-            submit: 'Регистрация',
-            home: 'Главная',
-            login: 'Логин',
-            registration: 'Регистрация',
-            gallery: 'Галерея',
-            course: 'Курсы',
-            teacher: 'Учителя',
-            profile: 'Профиль',
-            admin: 'Админ',
-            login1: 'Войти',
-            about: 'О нас'
-        },
-        kz: {
-            name: 'Аты',
-            surname: 'Тегі',
-            email: 'Электрондық пошта',
-            password: 'Құпиясөз',
-            submit: 'Тіркеу',
-            home: 'Басты Бет',
-            login: 'Логин',
-            registration: 'Тіркеу',
-            gallery: 'Галерея',
-            course: 'Курстар',
-            teacher: 'Мұғалімдер',
-            profile: 'Профиль',
-            admin: 'Админ',
-            login1: 'Кіру',
-            about: 'Біз туралы'
-        }
-    };
-
-    if (window.location.hash) {
-
-        if (window.location.hash == "#ru") {
-
-            email1.textContent = language.ru.email;
-            password1.textContent = language.ru.password;
-            home.textContent = language.ru.home;
-            login.textContent = language.ru.login;
-            registration.textContent = language.ru.registration;
-            gallery.textContent = language.ru.gallery;
-            course.textContent = language.ru.course;
-            teacher.textContent = language.ru.teacher;
-            profile.textContent = language.ru.profile;
-            admin.textContent = language.ru.admin;
-            login1.textContent = language.ru.login1;
-            about.textContent = language.ru.about;
-        }
-        else if (window.location.hash == "#kz") {
-            email1.textContent = language.kz.email;
-            password1.textContent = language.kz.password;
-            home.textContent = language.kz.home;
-            login.textContent = language.kz.login;
-            registration.textContent = language.kz.registration;
-            gallery.textContent = language.kz.gallery;
-            course.textContent = language.kz.course;
-            teacher.textContent = language.kz.teacher;
-            profile.textContent = language.kz.profile;
-            admin.textContent = language.kz.admin;
-            login1.textContent = language.kz.login1;
-            about.textContent = language.kz.about;
-        }
-    }
-</script>
+<script type="module" src="../imports.js"></script>
+<script type="module" src="../translation/translation.js"></script>
 </body>
 </html>

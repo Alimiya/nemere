@@ -17,25 +17,47 @@
 <div class="nemere">
     <div id="navbar-placeholder"></div>
     <div id="balabaqsha-placeholder"></div>
+    <div id="quick-connection"></div>
     <section id="why-do-they-love-us">
         <div class="why-do-they-love-us">
             <h1 class="why-do-they-love-us__title">Неге бізді жақсы көреді</h1>
             <div class="why-do-they-love-us__line"></div>
             <div class="why-do-they-love-us__blocks">
+                <div class="slider-container">
+                    <div class="slider">
+                        <div class="slide">
+                            <img class="image image-first" src="/assets/book.png" width="100" height="100" alt="">
+                            <p class="image-text" data-i18n="image-text-specialists">Білікті мамандар</p>
+                        </div>
+                        <div class="slide">
+                            <img class="image image-second" src="/assets/food.png" width="100" height="100" alt="">
+                            <p class="image-text" data-i18n="image-text-food">Дәмді тағамдар</p>
+                        </div>
+                        <div class="slide">
+                            <img class="image image-third" src="/assets/seminar.png"  width="100" height="100" alt="">
+                            <p class="image-text" data-i18n="image-text-programs">Тамаша бағдарламалар</p>
+                        </div>
+                        <div class="slide">
+                            <img class="image image-fourth" src="/assets/teddy.png" width="100" height="100" alt="">
+                            <p class="image-text" data-i18n="image-text-games">Көңілді ойындар</p>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="block">
-                    <img class="image-first" src="/assets/book.png" width="100" height="100" alt="">
+                    <img class="image image-first" src="/assets/book.png" width="100" height="100" alt="">
                     <p class="image-text" data-i18n="image-text-specialists">Білікті мамандар</p>
                 </div>
                 <div class="block">
-                    <img class="image-second" src="/assets/food.png" width="100" height="100" alt="">
+                    <img class="image image-second" src="/assets/food.png" width="100" height="100" alt="">
                     <p class="image-text" data-i18n="image-text-food">Дәмді тағамдар</p>
                 </div>
                 <div class="block">
-                    <img class="image-third" src="/assets/seminar.png" width="100" height="100" alt="">
+                    <img class="image image-third" src="/assets/seminar.png"  width="100" height="100" alt="">
                     <p class="image-text" data-i18n="image-text-programs">Тамаша бағдарламалар</p>
                 </div>
                 <div class="block">
-                    <img class="image-fourth" src="/assets/teddy.png" width="100" height="100" alt="">
+                    <img class="image image-fourth" src="/assets/teddy.png" width="100" height="100" alt="">
                     <p class="image-text" data-i18n="image-text-games">Көңілді ойындар</p>
                 </div>
             </div>
@@ -77,7 +99,7 @@
                 </div>
                 <div class="teacher">
                     <img class="teacher__img eight" src="/assets/teacher8.png" alt="">
-                    <p class="teacher__fio">Зукашева Альмира Дашоновна</p>
+                    <p class="teacher__fio">Буланбаева Ақмарал Ыбрайымханқызы</p>
                 </div>
                 <div class="teacher">
                     <img class="teacher__img" src="/assets/teacher9.png" alt="">
@@ -92,8 +114,16 @@
                     <p class="teacher__fio">Алмаганбетова Гульнур Саленовна</p>
                 </div>
                 <div class="teacher">
-                    <img class="teacher__img teacher-twelve" src="../../assets/teacher12.png" alt="">
+                    <img class="teacher__img teacher-twelve" src="/assets/teacher12.png" alt="">
                     <p class="teacher__fio">Рысбекова Айжан Рысбеккызы</p>
+                </div>
+                <div class="teacher">
+                    <img class="teacher__img teacher-twelve" src="/assets/teacher13.png" alt="">
+                    <p class="teacher__fio">Байдильдинова Гүлшат Ешмұхамбетқызы</p>
+                </div>
+                <div class="teacher">
+                    <img class="teacher__img teacher-fourteen" src="/assets/teacher14.png" alt="">
+                    <p class="teacher__fio">Дүкенбекова Асем Толеубаевна</p>
                 </div>
                 <img class="teacher-ellipse" src="/assets/teacher-ellipse.png" alt="">
             </div>
@@ -101,13 +131,12 @@
     </section>
     <div class="our-gallery">
         <h1 class="our-gallery__title">Біздің галерея</h1>
-        <%- include('../components/gallery');%>
+        <div id="gallery"></div>
         <div class="our-gallery__go-to-gallery">
             <button class="our-gallery__btn">Толығырақ көру</button>
         </div>
     </div>
-    <%- include('../components/footer'); %>
-    <%- include('../components/quickConnection'); %>
+    <div id="footer"></div>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script type="module" src="/js/imports.js"></script>
     <script type="module" src="/js/translation.js"></script>
