@@ -136,7 +136,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         "work-parents": "Работа с родителями",
                         "work-kids": "Работа с детьми",
                         "personal-experience": "Личный опыт",
-                        "sort": "Сортиировка",
+                        "sort": "Сортировка",
                         "name-asc": "От А до Я",
                         "name-desc": "От Я до А",
                         "date-asc": "Новые курсы (по дате)",

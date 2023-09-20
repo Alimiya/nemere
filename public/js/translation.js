@@ -2,24 +2,25 @@ async function getCourses() {
     try {
         const response = await fetch('http://localhost:3000/api/courses');
         const data = await response.json();
-        console.log(data)
-        return data;
-    } catch (error) {
-        console.log(error);
-    }
-}
-async function getUsers() {
-    try {
-        const response = await fetch('http://localhost:3000/api/users');
-        const data = await response.json();
-        console.log(data)
         return data;
     } catch (error) {
         console.log(error);
     }
 }
 
-function updateTranslations() {
+async function getUsers() {
+    try {
+        const response = await fetch('http://localhost:3000/api/users');
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+async function updateTranslations() {
+    const courses = await getCourses();
+    const users = await getUsers();
     if (window.location.pathname === '/') {
         const imageTextElements = document.querySelectorAll('.image-text');
         imageTextElements.forEach(element => {
@@ -72,8 +73,6 @@ function updateTranslations() {
             option.textContent = i18next.t(translationKey);
         });
 
-        document.querySelector('.courses__title').textContent = i18next.t('courses__title');
-
         const coursesParagraphs = document.querySelectorAll('.courses-paragraph');
         coursesParagraphs.forEach(coursesParagraph => {
             const translationKey = coursesParagraph.dataset.i18n;
@@ -87,7 +86,7 @@ function updateTranslations() {
         });
     }
 
-    courses.forEach(course=> {
+    courses.forEach(course => {
         if (window.location.pathname === `/course/read/${course._id}`) {
             document.querySelector('.buy-button').textContent = i18next.t('buy-button');
         }
@@ -174,13 +173,13 @@ function updateTranslations() {
         }
     })
 
-    if (window.location.pathname === '/nemere/connections/connections.html') {
+    if (window.location.pathname === '/about') {
         document.querySelector('.requisites__address-title').textContent = i18next.t('requisites__address-title');
         document.querySelector('.requisites__social-networks-title').textContent = i18next.t('requisites__social-networks-title');
         document.querySelector('.requisites__title').textContent = i18next.t('requisites__title');
     }
 
-    if (window.location.pathname === '/nemere/login/login.html') {
+    if (window.location.pathname === '/login') {
         const loginLabels = document.querySelectorAll('label');
         loginLabels.forEach(label => {
             const translationKey = label.dataset.i18n;
@@ -193,7 +192,7 @@ function updateTranslations() {
         document.querySelector('.register-link').textContent = i18next.t('register-link');
     }
 
-    if (window.location.pathname === '/nemere/registration/register.html') {
+    if (window.location.pathname === '/register') {
         const registerLabels = document.querySelectorAll('label');
         registerLabels.forEach(label => {
             const translationKey = label.dataset.i18n;
@@ -331,6 +330,9 @@ export function initializeLocalization() {
             resources: {
                 kz: {
                     translation: {
+                        "profile-link": "Профиль",
+                        "submit-quick-link": "Жіберу",
+                        "admin-link": "Админ",
                         "gallery-link": "Галерея",
                         "teachers-link": "Біздің мұғалімдер",
                         "courses-link": "Әдістемелік жәшігі",
@@ -422,6 +424,9 @@ export function initializeLocalization() {
                 },
                 ru: {
                     translation: {
+                        "profile-link": "Профиль",
+                        "submit-quick-link": "Отправить",
+                        "admin-link": "Админ",
                         "gallery-link": "Галерея",
                         "teachers-link": "Наши учителя",
                         "courses-link": "Методическая копилка",
@@ -479,7 +484,7 @@ export function initializeLocalization() {
                         "work-parents": "Работа с родителями",
                         "work-kids": "Работа с детьми",
                         "personal-experience": "Личный опыт",
-                        "sort": "Сортиировка",
+                        "sort": "Сортировка",
                         "name-asc": "От А до Я",
                         "name-desc": "От Я до А",
                         "date-asc": "Новые курсы (по дате)",

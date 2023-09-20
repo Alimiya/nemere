@@ -13,10 +13,7 @@ exports.getProfile = async (req, res) => {
         // Get the user's information from the database
         const users = await UserModel.findById(req.params.id)
         const course = await CourseModel.find({user_id:req.params.id})
-        console.log(course)
-        console.log(users)
         if (!users) {
-            console.log("no user")
             return res.status(404).send("User not found")
         }
         // Render the profile page with the user's name
@@ -70,10 +67,6 @@ exports.uploadProfile=async (req,res)=>{
             .save()
             .then(()=>res.redirect(`/profile/${id}`))
             .catch(err=>console.log(err))
-        console.log("upload: "+uploadImage)
-        console.log("image: "+image)
-        console.log("imageName: "+imageName)
-        console.log("id: "+id)
     }
     catch (err){
         console.log(err)
@@ -85,12 +78,8 @@ exports.getImage=async(req,res)=>{
     const id=req.params.id
     try{
         const user = await UserModel.findById(req.params.id)
-        if(!user || !user.image){
-            console.log("no image")
-        }
         res.set("Content-Type", "image/png")
         res.send(user.image)
-    console.log("user.image: "+user.image)
     }
     catch (err){
         console.log(err)
@@ -101,7 +90,6 @@ exports.getImage=async(req,res)=>{
 exports.getCourse=async(req,res)=>{
     const {title,description, price, direction} = req.body
     const id=req.params.id
-    console.log(id)
     const user_id=id
     const pdf = req.file ? req.file.filename : null
     try{
@@ -126,8 +114,6 @@ exports.deleteCourse=async(req,res,next)=>{
     try {
         const id = req.params.id
         const user_id = await CourseModel.findOne({_id:id})
-        console.log("start:"+user_id.user_id+":end")
-        console.log("start:"+user_id+":end")
         const user = await UserModel.findOne({id:Object(user_id.user_id)})
         const courses = await CourseModel.findByIdAndDelete(id)
         if (!courses) {
@@ -143,8 +129,6 @@ exports.updateCourse=async(req,res,next)=>{
     try {
         const id = req.params.id
         const user_id = await CourseModel.findOne({_id:id})
-        console.log("start:"+user_id.user_id+":end")
-        console.log("start:"+user_id+":end")
         const {fio, title, description,price,direction } = req.body
         const user = await UserModel.findOne({id:Object(user_id.user_id)})
         const courses = await CourseModel.findByIdAndUpdate(id, {fio, title, description,price,direction},{ new: true })

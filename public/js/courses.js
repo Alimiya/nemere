@@ -16,7 +16,6 @@ async function getData() {
     const coursesContainer = document.getElementById('courses-container');
 
     courses.forEach(course => {
-        console.log(course._id)
         const courseCard = document.createElement('div');
         courseCard.classList.add('course-card');
 

@@ -21,7 +21,6 @@ exports.postRegister = async (req, res) => {
             res
                 .status(400)
                 .json({ success: false, message: "Please fill all required fields" })
-            console.log("no data")
             return
         }
 
@@ -82,7 +81,6 @@ exports.postLogin = async (req, res) => {
             res
                 .status(400)
                 .json({ success: false, message: "Please provide email and password" })
-            console.log("no data")
             return
         }
 
@@ -93,7 +91,6 @@ exports.postLogin = async (req, res) => {
                 success: false,
                 message: "User with this email does not exist",
             })
-            console.log("exist")
             return
         }
 
@@ -101,7 +98,6 @@ exports.postLogin = async (req, res) => {
         const isPasswordCorrect = await bcrypt.compare(password, user.password)
         if (!isPasswordCorrect) {
             res.status(400).json({ success: false, message: "Incorrect password" })
-            console.log("pass")
             return
         }
 
@@ -116,7 +112,6 @@ exports.postLogin = async (req, res) => {
             res.cookie("auth", 'true', { maxAge:900000 })
             return res.redirect("/admin/users")
         } else {
-            console.log(user._id)
             res.cookie("authuser", "user", { maxAge:900000 })
             return res.redirect(`/profile/${user._id}`)
         }
@@ -155,8 +150,6 @@ exports.gallery=async(req,res)=>{
 }
 
 exports.navbar=async(req,res)=>{
-    console.log(req.body)
-    console.log(req.params.id)
     const users=await UserModel.findById(req.params.id)
     res.render('components/header',{users:users, adminlogin:req.cookies.auth, userlogin:req.cookies.authuser, _id:req.params.id})
 }

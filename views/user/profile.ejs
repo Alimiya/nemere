@@ -184,5 +184,10 @@
 <script type="module" src="/js/imports.js"></script>
 <script type="module" src="/js/translation.js"></script>
 <script type="text/javascript" src="/js/quickConnection.js"></script>
+<script>
+    let params = new URLSearchParams(document.location.search)
+    let id = params.get("id")
+    console.log(id)
+</script>
 </body>
 </html>
