@@ -34,6 +34,7 @@
         <div>
             <label class="rating" data-i18n="rating">Рейтинг:</label>
             <div class="rating">
+                <label for="rating" class="rating-on-to-five" data-i18n="rating-on-to-five"></label>
                 <select name="rating" id="rating" required>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -45,21 +46,27 @@
         </div>
         <button class="course-info__submit-btn" data-i18n="course-info__submit-btn" type="submit">Отправить комментарий</button>
     </form>
+    <h3 class="course__ratings" data-i18n="course__ratings"></h3>
     <div id="average-rating"></div>
     <ul id="user-ratings"></ul>
+    <h3 class="course-commentaries-title"></h3>
 </div>
 <%})%>
 <%comments.forEach((comment, i)=>{%>
-
-<ul class="course__ratings-items">
-    <li class="course__ratings-item"><%=comment.comment%></li>
-    <li class="user__ratings-item"><%=comment.rating%></li>
-    <%if(adminlogin){%>
-    <form action="/course/comment/<%=comment._id%>/delete" method="post">
-        <button type="submit" class="btn btn-danger mr-1">Delete</button>
-    </form>
-    <%}%>
-</ul>
+<div id="average-rating"></div>
+<div class="course__ratings-items">
+    <ul id="user-ratings" class="comment-section">
+        <label>Комментарий: </label>
+        <li class="comment-text"><%=comment.comment%></li>
+        <label>Рейтинг: </label>
+        <li class="comment-rating"><%=comment.rating%></li>
+        <%if(adminlogin){%>
+        <form action="/course/comment/<%=comment._id%>/delete" method="post">
+            <button type="submit" class="delete-button">Delete</button>
+        </form>
+        <%}%>
+    </ul>
+</div>
 <%})%>
 <div id="footer"></div>
 <script type="module" src="/js/imports.js"></script>
