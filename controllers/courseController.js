@@ -1,6 +1,6 @@
 const CourseModel = require("../models/courseModel")
 const UserModel = require("../models/courseModel")
-const Comment = require("../models/CommentModel")
+const Comment = require("../models/commentModel")
 const Course = require("../models/courseModel");
 
 // Получение данных курсов
