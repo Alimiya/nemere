@@ -90,9 +90,11 @@ async function updateTranslations() {
         if (window.location.pathname === `/course/read/${course._id}`) {
             document.querySelector('.buy-button').textContent = i18next.t('buy-button');
             document.querySelector('.leave-comment').textContent = i18next.t('leave-comment');
+            document.querySelector('.course-commentaries-title').textContent = i18next.t('course-commentaries-title');
             document.querySelector('.comment').textContent = i18next.t('comment');
             document.querySelector('.rating').textContent = i18next.t('rating');
             document.querySelector('.course-info__submit-btn').textContent = i18next.t('course-info__submit-btn');
+            document.querySelector('.delete-button').textContent = i18next.t('delete--link');
         }
     })
 
@@ -334,6 +336,7 @@ export function initializeLocalization() {
             resources: {
                 kz: {
                     translation: {
+                        "course-commentaries-title":"Әдістемеліктердің пікірлері",
                         "delete--course--link":"Әдістемелікті өшіру",
                         "delete--course--text--link":"Сіз бұл әдістемелікті өшіргіңіз келетініне сенімдісіз бе?",
                         "status---link":"Өңдеуде",
@@ -479,12 +482,13 @@ export function initializeLocalization() {
                         "comment": "Пікір: ",
                         "rating": "Рейтинг: ",
                         "rating-on-to-five": "Рейтинг (1-5): ",
-                        "course-info__submit-btn": "Жіберу",
+                        "course-info__submit-btn": "Пікірді жіберу",
                         "courseratings": "Пікірлер"
                     }
                 },
                 ru: {
                     translation: {
+                        "course-commentaries-title":"Комментарии к курсу",
                         "delete--course--link":"Удалить курс",
                         "delete--course--text--link":"Вы уверены что хотите удалить курс?",
                         "status---link":"В обработке",
@@ -629,7 +633,7 @@ export function initializeLocalization() {
                         "comment": "Комментарий: ",
                         "rating": "Рейтинг: ",
                         "rating-on-to-five": "Рейтинг (1-5): ",
-                        "course-info__submit-btn": "Отправить",
+                        "course-info__submit-btn": "Отправить комментарий",
                         "courseratings": "Комментарии"
                     }
                 }

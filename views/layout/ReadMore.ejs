@@ -46,23 +46,18 @@
         </div>
         <button class="course-info__submit-btn" data-i18n="course-info__submit-btn" type="submit">Отправить комментарий</button>
     </form>
-    <h3 class="course__ratings" data-i18n="course__ratings"></h3>
-    <div id="average-rating"></div>
-    <ul id="user-ratings"></ul>
-    <h3 class="course-commentaries-title"></h3>
 </div>
 <%})%>
+    <h2 class="course-commentaries-title" data-i18n="course-commentaries-title"></h3>
 <%comments.forEach((comment, i)=>{%>
 <div id="average-rating"></div>
 <div class="course__ratings-items">
-    <ul id="user-ratings" class="comment-section">
-        <label>Комментарий: </label>
-        <li class="comment-text"><%=comment.comment%></li>
-        <label>Рейтинг: </label>
+    <ul id="user-ratings" class="comment-section" data-i18n="comment">
+        <li class="comment-text" data-i18n="rating"><%=comment.comment%></li>
         <li class="comment-rating"><%=comment.rating%></li>
         <%if(adminlogin){%>
         <form action="/course/comment/<%=comment._id%>/delete" method="post">
-            <button type="submit" class="delete-button">Delete</button>
+            <button type="submit" class="delete-button" data-i18n="delete--link">Delete</button>
         </form>
         <%}%>
     </ul>
